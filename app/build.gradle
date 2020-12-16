@@ -1,0 +1,14 @@
+// 仅全局配置
+apply from: "build_common.gradle"
+
+// flavor 单 dimension【无全局配置】
+//apply from: "build_flavor_single_dimension.gradle"
+
+// flavor 单 dimension【有全局配置】
+//apply from: "build_flavor_single_dimension_global.gradle"
+
+// flavor 多 dimension【无全局配置】
+//apply from: "build_flavor_multi_dimension.gradle"
+
+// flavor 多 dimension【有全局配置】
+//apply from: "build_flavor_multi_dimension_global.gradle"

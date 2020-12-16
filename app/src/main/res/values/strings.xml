@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ModooPlay Demo</string>
+
+    <string name="debug_page">调试页面</string>
+    <string name="ad_test">广告测试</string>
+    <string name="user_agreement">用户协议</string>
+    <string name="privacy_policy">隐私政策</string>
+
+</resources>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.tgcenter.demo">
+
+    <application
+        android:name=".ModooPlayApplication"
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:resizeableActivity="true"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <!-- 配置 AppsFlyer 渠道 -->
+        <meta-data
+            android:name="CHANNEL"
+            android:value="bytedance" />
+
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ads.NetworkAdActivity" />
+
+        <activity
+            android:name=".ads.adtype.AdTypeActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ads.adtype.BannerActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
+
+        <activity
+            android:name=".ads.adtype.InterstitialActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ads.adtype.RewardedVideoActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ads.adtype.FeedListActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ads.adtype.SplashActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" />
+
+        <activity
+            android:name=".ads.adtype.MixViewActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ads.adtype.MixFullScreenActivity"
+            android:screenOrientation="portrait" />
+
+    </application>
+</manifest>

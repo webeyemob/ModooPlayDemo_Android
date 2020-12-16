@@ -1,0 +1,117 @@
+apply plugin: 'com.android.application'
+// ModooPlay
+apply plugin: 'com.tgcenter.unified'
+
+// flavor 单 dimension【有全局配置】
+// 1、flavor 不配置则使用全局配置
+// 2、flavor 可单独配置 config 和 dependencies
+// 3、flavor 中配置 null 覆盖全局配置，表示不接入
+
+// 全局配置
+tgCenter {
+    config {
+        appId "4b4b6832-4267-42db-9c04-d517d5288bbb"
+    }
+    dependencies {
+        umeng true
+        appsFlyer true
+        rangersAppLog_Lite_cn true
+        taurusXAds true
+        taurusXAdsNetwork = [
+                toutiao: true
+        ]
+    }
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "com.tgcenter.demo"
+        minSdkVersion 19
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions "custom"
+
+    productFlavors {
+        // 不配置则使用全局配置
+        useDefault {
+            dimension "custom"
+        }
+
+        // 仅配置 config，dependencies 使用全局配置
+        customConfig {
+            dimension "custom"
+            tgCenter {
+                config {
+                    appId "appId_toutiao_outer"
+                }
+            }
+        }
+
+        // 仅配置 dependencies，config 使用全局配置
+        customDependencies {
+            dimension "custom"
+            tgCenter {
+                dependencies {
+                    umeng true
+                    appsFlyer true
+                    taurusXAds true
+                    taurusXAdsNetwork = [
+                            ylh: true,
+                    ]
+                }
+            }
+        }
+
+        // 配置 config 和 dependencies
+        customAll {
+            tgCenter {
+                config {
+                    appId "appId_custom"
+                }
+                dependencies {
+                    umeng true
+                    appsFlyer true
+                    taurusXAds true
+                    taurusXAdsNetwork = [
+                            kuaishou: true
+                    ]
+                }
+            }
+        }
+
+        // 不接入（需要设置 null 覆盖全屏配置）
+        noTGCenter {
+            dimension "custom"
+            tgCenter {
+                config null
+                dependencies null
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.multidex:multidex:2.0.1'
+}
+
+configurations.all {
+    resolutionStrategy {
+    }
+}

@@ -1,0 +1,36 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        // 用于 ModooPlay 内部测试使用
+        maven { url "./Upload-Plugin" }
+        maven { url "./Upload-Library" }
+
+        google()
+        jcenter()
+
+        // ModooPlay
+        maven { url "https://dl.bintray.com/tgcenter/Unified" }
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:4.0.2"
+
+        // ModooPlay
+        classpath "com.tgcenter.unified:plugin:1.0.beta6"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+
+        // 用于 ModooPlay 内部测试使用
+        maven { url "../Upload-Plugin" }
+        maven { url "../Upload-Library" }
+        maven { url "../Upload-Sdk" }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
