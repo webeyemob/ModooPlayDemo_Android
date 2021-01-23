@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.nefarian.privacy.policy.IPrivacyPolicyCallback;
 import com.nefarian.privacy.policy.PrivacyPolicyHelper;
 import com.tgcenter.demo.ads.NetworkAdActivity;
+import com.tgcenter.unified.sdk.api.Day1Retention;
 import com.tgcenter.unified.sdk.api.InitConfig;
 import com.tgcenter.unified.sdk.api.TGCenter;
 

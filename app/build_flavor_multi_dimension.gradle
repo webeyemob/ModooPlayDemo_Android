@@ -48,6 +48,9 @@ android {
                     appId "appId_toutiao_inner"
                 }
                 dependencies {
+                    tgCenter true
+                    privacy true
+                    embed true
                     umeng true
                     appsFlyer true
                     rangersAppLog_Lite_cn true
@@ -78,6 +81,9 @@ android {
                     appId "appId_paid"
                 }
                 dependencies {
+                    tgCenter true
+                    privacy true
+                    embed true
                     umeng true
                     appsFlyer true
                     taurusXAds true

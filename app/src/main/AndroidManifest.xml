@@ -15,11 +15,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!-- 配置 AppsFlyer 渠道 -->
-        <meta-data
-            android:name="CHANNEL"
-            android:value="bytedance" />
-
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

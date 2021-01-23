@@ -15,6 +15,9 @@ tgCenter {
         appId "4b4b6832-4267-42db-9c04-d517d5288bbb"
     }
     dependencies {
+        tgCenter true
+        privacy true
+        embed true
         umeng true
         appsFlyer true
         rangersAppLog_Lite_cn true
@@ -88,6 +91,9 @@ android {
                 // 不配置 config，使用 "channel" 中的配置，
                 // 如果 "channel" 中无配置，则使用全局配置中的 config
                 dependencies {
+                    tgCenter true
+                    privacy true
+                    embed true
                     umeng true
                     appsFlyer true
                     taurusXAds true

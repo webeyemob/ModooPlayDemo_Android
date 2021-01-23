@@ -13,6 +13,9 @@ tgCenter {
         appId "4b4b6832-4267-42db-9c04-d517d5288bbb"
     }
     dependencies {
+        tgCenter true
+        privacy true
+        embed true
         umeng true
         appsFlyer true
         rangersAppLog_Lite_cn true
@@ -67,6 +70,9 @@ android {
             dimension "custom"
             tgCenter {
                 dependencies {
+                    tgCenter true
+                    privacy true
+                    embed true
                     umeng true
                     appsFlyer true
                     taurusXAds true
@@ -84,6 +90,9 @@ android {
                     appId "appId_custom"
                 }
                 dependencies {
+                    tgCenter true
+                    privacy true
+                    embed true
                     umeng true
                     appsFlyer true
                     taurusXAds true
