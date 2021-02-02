@@ -8,10 +8,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.antiaddiction.sdk.AntiAddictionKit;
 import com.nefarian.privacy.policy.IPrivacyPolicyCallback;
 import com.nefarian.privacy.policy.PrivacyPolicyHelper;
 import com.tgcenter.demo.ads.NetworkAdActivity;
-import com.tgcenter.unified.sdk.api.Day1Retention;
+import com.tgcenter.demo.anti_addiction.AntiAddictionActivity;
 import com.tgcenter.unified.sdk.api.InitConfig;
 import com.tgcenter.unified.sdk.api.TGCenter;
 
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private Button mAdTestButton;
     private Button mUserAgreementButton;
     private Button mPrivacyPolicyButton;
+    private Button mAntiAddiction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,5 +142,27 @@ public class MainActivity extends AppCompatActivity {
                 new PrivacyPolicyHelper.Builder(MainActivity.this).build().jumpToPrivacyPolicy();
             }
         });
+
+        mAntiAddiction = findViewById(R.id.button_anti_addiction);
+        mAntiAddiction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AntiAddictionActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    // 为保证用户的时长统计准确，游戏需要在运行的主 Activity 的 onResume() 和 onStop() 的方法中调用如下接口
+    @Override
+    protected void onResume() {
+        super.onResume();
+        AntiAddictionKit.onResume();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        AntiAddictionKit.onStop();
     }
 }

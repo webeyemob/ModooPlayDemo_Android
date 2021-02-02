@@ -5,5 +5,12 @@
     <string name="ad_test">广告测试</string>
     <string name="user_agreement">用户协议</string>
     <string name="privacy_policy">隐私政策</string>
+    <string name="anti_addiction">游戏防沉迷</string>
+
+    <string name="anti_addiction_login">登录</string>
+    <string name="anti_addiction_logout">登出</string>
+    <string name="anti_addiction_pay">支付</string>
+    <string name="anti_addiction_chat">聊天</string>
+    <string name="anti_addiction_open_real_name">打开实名认证</string>
 
 </resources>
