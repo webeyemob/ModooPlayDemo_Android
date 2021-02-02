@@ -29,10 +29,10 @@ tgCenter {
                 oppo            : false, // OPPO
                 vivo            : false, // vivo
                 xiaomi          : false, // 小米
-                mobrain         : false, // 穿山甲聚合
-                mobrain_toutiao : false, // 穿山甲聚合-穿山甲
-                mobrain_ylh     : false, // 穿山甲聚合-优量汇
-                mobrain_kuaishou: false  // 穿山甲聚合-快手
+                mobrain         : true, // 穿山甲聚合
+                mobrain_toutiao : true, // 穿山甲聚合-穿山甲
+                mobrain_ylh     : true, // 穿山甲聚合-优量汇
+                mobrain_kuaishou: true  // 穿山甲聚合-快手
         ]
     }
 }
@@ -43,7 +43,7 @@ android {
 
     defaultConfig {
         applicationId "com.tgcenter.demo"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
