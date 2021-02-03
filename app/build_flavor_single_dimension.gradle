@@ -11,7 +11,7 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.tgcenter.demo"
+        applicationId "com.modooplay.demo"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1

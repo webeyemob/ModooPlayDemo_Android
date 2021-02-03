@@ -17,6 +17,9 @@ public class AntiAddictionActivity extends AppCompatActivity {
 
     private final String TAG = "AntiAddictionActivity";
 
+    // 记录是否登录了
+    private static boolean mHasLogin;
+
     private Button mLoginButton;
     private Button mLogoutButton;
     private Button mPayButton;
@@ -48,7 +51,7 @@ public class AntiAddictionActivity extends AppCompatActivity {
                 .useSdkRealName(true) // 是否使用 SDK 实名认证功能
                 .useSdkPaymentLimit(true) // 是否使用 SDK 付费限制
                 .useSdkOnlineTimeLimit(true) // 是否使用 SDK 在线时长限制
-                .showSwitchAccountButton(true); // 是否显示切换账号按钮
+                .showSwitchAccountButton(true); // 是否显示切换账号按钮，单机游戏无账号系统可设置为 NO 隐藏该按钮
     }
 
     // 功能参数配置（采用默认值可跳过）
@@ -93,7 +96,7 @@ public class AntiAddictionActivity extends AppCompatActivity {
                         logAndToast("AAk Window Show");
                         break;
                     case AntiAddictionKit.CALLBACK_CODE_AAK_WINDOW_DISMISS:
-                        // 额外弹窗小时，包括时间受限等
+                        // 额外弹窗消失，包括时间受限等
                         // 额外窗口消失时通知游戏
                         logAndToast("AAk Window Dismiss");
                         break;
@@ -102,21 +105,15 @@ public class AntiAddictionActivity extends AppCompatActivity {
                         // 登录成功
                         // 当游戏调用 login 后，直接进入游戏或完成实名认证后触发
                         logAndToast("Login Success");
-                        mLoginButton.setEnabled(false);
-                        mLogoutButton.setEnabled(true);
-                        mPayButton.setEnabled(true);
-                        mChatButton.setEnabled(true);
-                        mOpenRealNameButton.setEnabled(true);
+                        mHasLogin = true;
+                        switchUI(true);
                         break;
                     case AntiAddictionKit.CALLBACK_CODE_SWITCH_ACCOUNT:
                         // 登出、切换账号
                         // 当用户因防沉迷机制受限时，登录认证失败或选择切换账号时会触发
                         logAndToast("Switch Account");
-                        mLoginButton.setEnabled(true);
-                        mLogoutButton.setEnabled(false);
-                        mPayButton.setEnabled(false);
-                        mChatButton.setEnabled(false);
-                        mOpenRealNameButton.setEnabled(false);
+                        mHasLogin = false;
+                        switchUI(false);
                         break;
                     case AntiAddictionKit.CALLBACK_CODE_USER_TYPE_CHANGED:
                         // 用户类型变更
@@ -189,6 +186,7 @@ public class AntiAddictionActivity extends AppCompatActivity {
     // 付费
     private void pay() {
         // 游戏在收到用户的付费请求后，调用 SDK 的对应接口来判断当前用户的付费行为是否被限制
+        // 如果没有实名，会弹出实名认证界面
         // 参数表示付费的金额，单位为分
         AntiAddictionKit.checkPayLimit(10 * 100);
     }
@@ -218,6 +216,7 @@ public class AntiAddictionActivity extends AppCompatActivity {
     // 打开实名认证
     private void openRealName() {
         // 除了付费、聊天、时长限制时，有其他场景需要主动打开实名窗口，则可以通过该接口让用户进行实名，否则不需要调用该接口
+        // 如果用户实名过了，调用 openRealName() 会直接回调 CALLBACK_CODE_REAL_NAME_SUCCESS
         AntiAddictionKit.openRealName();
     }
 
@@ -231,7 +230,6 @@ public class AntiAddictionActivity extends AppCompatActivity {
         });
 
         mLogoutButton = findViewById(R.id.button_logout);
-        mLogoutButton.setEnabled(false);
         mLogoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -240,7 +238,6 @@ public class AntiAddictionActivity extends AppCompatActivity {
         });
 
         mPayButton = findViewById(R.id.button_pay);
-        mPayButton.setEnabled(false);
         mPayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -249,7 +246,6 @@ public class AntiAddictionActivity extends AppCompatActivity {
         });
 
         mChatButton = findViewById(R.id.button_chat);
-        mChatButton.setEnabled(false);
         mChatButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -258,12 +254,29 @@ public class AntiAddictionActivity extends AppCompatActivity {
         });
 
         mOpenRealNameButton = findViewById(R.id.button_open_real_name);
-        mOpenRealNameButton.setEnabled(false);
         mOpenRealNameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openRealName();
             }
         });
+
+        switchUI(mHasLogin);
+    }
+
+    private void switchUI(boolean hasLogin) {
+        if (hasLogin) {
+            mLoginButton.setEnabled(false);
+            mLogoutButton.setEnabled(true);
+            mPayButton.setEnabled(true);
+            mChatButton.setEnabled(true);
+            mOpenRealNameButton.setEnabled(true);
+        } else {
+            mLoginButton.setEnabled(true);
+            mLogoutButton.setEnabled(false);
+            mPayButton.setEnabled(false);
+            mChatButton.setEnabled(false);
+            mOpenRealNameButton.setEnabled(false);
+        }
     }
 }

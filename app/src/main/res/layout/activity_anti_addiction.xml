@@ -24,40 +24,40 @@
     <Button
         android:id="@+id/button_login"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginBottom="24dp"
+        android:layout_height="75dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/anti_addiction_login"
         android:textSize="20dp" />
 
     <Button
         android:id="@+id/button_logout"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginBottom="24dp"
+        android:layout_height="75dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/anti_addiction_logout"
         android:textSize="20dp" />
 
     <Button
         android:id="@+id/button_pay"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginBottom="24dp"
+        android:layout_height="75dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/anti_addiction_pay"
         android:textSize="20dp" />
 
     <Button
         android:id="@+id/button_chat"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginBottom="24dp"
+        android:layout_height="75dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/anti_addiction_chat"
         android:textSize="20dp" />
 
     <Button
         android:id="@+id/button_open_real_name"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginBottom="24dp"
+        android:layout_height="75dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/anti_addiction_open_real_name"
         android:textSize="20dp" />
 </LinearLayout>

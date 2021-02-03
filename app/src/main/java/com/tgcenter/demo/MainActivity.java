@@ -25,7 +25,8 @@ public class MainActivity extends AppCompatActivity {
     private Button mAdTestButton;
     private Button mUserAgreementButton;
     private Button mPrivacyPolicyButton;
-    private Button mAntiAddiction;
+    private Button mAntiAddictionButton;
+    private Button mClearCacheButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,14 +144,27 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mAntiAddiction = findViewById(R.id.button_anti_addiction);
-        mAntiAddiction.setOnClickListener(new View.OnClickListener() {
+        mAntiAddictionButton = findViewById(R.id.button_anti_addiction);
+        mAntiAddictionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, AntiAddictionActivity.class);
                 startActivity(intent);
             }
         });
+
+        mClearCacheButton = findViewById(R.id.button_clear_cache);
+        mClearCacheButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clearCache();
+            }
+        });
+    }
+
+    // 清除 SDK 的所有数据，包括《用户协议与隐私政策》的授权状态、用户信息等
+    private void clearCache() {
+        TGCenter.clearCache(MainActivity.this);
     }
 
     // 为保证用户的时长统计准确，游戏需要在运行的主 Activity 的 onResume() 和 onStop() 的方法中调用如下接口
