@@ -151,5 +151,10 @@
       <option name="name" value="maven3" />
       <option name="url" value="file:$PROJECT_DIR$/Upload-Sdk" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven22" />
+      <option name="name" value="maven22" />
+      <option name="url" value="https://dl.bintray.com/mintegral-official/Andorid_ad_SDK_for_china_support" />
+    </remote-repository>
   </component>
 </project>

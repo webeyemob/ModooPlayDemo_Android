@@ -26,16 +26,17 @@ tgCenter {
         taurusXAds true
         // 不同的渠道需要集成的 Network 不一样，请务必正确配置
         taurusXAdsNetwork = [
-                mobrain         : true, // 穿山甲聚合
-                mobrain_toutiao : true, // 穿山甲聚合-穿山甲
-                mobrain_ylh     : true, // 穿山甲聚合-优量汇
-                mobrain_kuaishou: true, // 穿山甲聚合-快手
-                toutiao         : false, // 穿山甲
-                ylh             : false, // 优量汇
-                kuaishou        : false, // 快手
-                oppo            : false, // OPPO
-                vivo            : false, // vivo
-                xiaomi          : false  // 小米
+                mobrain          : true, // 穿山甲聚合
+                mobrain_toutiao  : true, // 穿山甲聚合-穿山甲
+                mobrain_ylh      : true, // 穿山甲聚合-优量汇
+                mobrain_kuaishou : true, // 穿山甲聚合-快手
+                mobrain_mintegral: true, // 穿山甲聚合-Mintegral
+                toutiao          : false, // 穿山甲
+                ylh              : false, // 优量汇
+                kuaishou         : false, // 快手
+                oppo             : false, // OPPO
+                vivo             : false, // vivo
+                xiaomi           : false  // 小米
         ]
     }
 }
@@ -60,10 +61,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
 }
 
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation fileTree(dir: "libs", include: ["*.jar", "*.aar"])
+
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.multidex:multidex:2.0.1'
 }
