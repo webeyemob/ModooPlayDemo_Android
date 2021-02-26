@@ -74,6 +74,40 @@ dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.multidex:multidex:2.0.1'
+
+    // base
+    implementation('com.richox.base:richox_base:1.0.2')
+    // h5
+    implementation('com.richox.sdk:richox_h5:2.0.1')
+    implementation 'com.airbnb.android:lottie:2.7.0'
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.15'
+    // share
+    implementation 'com.google.zxing:core:3.3.0'
+    implementation 'com.fission.sdk:openinstall:2.5.1'
+    implementation('com.richox.share:richox_fission_openinstall:1.0.2')
+    // strategy fission
+    implementation('com.richox.strategy:richox_strategy_fission:1.0.2')
+    // normal strategy
+    implementation('com.richox.strategy.normal:richox_normal_strategy:1.0.2')
+    // stage strategy
+    implementation('com.richox.strategy.stage:richox_stage_strategy:1.0.2')
+    // sect
+    implementation('com.richox.sect:richox_sect:1.0.2')
+
+
+    // for test
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+
+    // wechat
+    implementation 'com.we.modoo:modoosdk:1.0.6'
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:6.6.4'
+
+    // general
+//    implementation 'com.satori.sdk:eventio-openudid:1.0.3'
+//    implementation 'com.satori.sdk:eventio-crashlytics:1.0.5'
+//    implementation 'com.satori.sdk:eventio-go:2.1.1.2'
+//    implementation 'com.satori.sdk:miit_mdid:1.0.13'
+
 }
 
 configurations.all {

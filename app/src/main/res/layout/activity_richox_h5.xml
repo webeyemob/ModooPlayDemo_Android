@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/richox_demo_float"
+        style="@style/mine_text_style"
+        android:text="Float样式" />
+
+    <View style="@style/divide_style" />
+
+    <TextView
+        android:id="@+id/richox_demo_dialog"
+        style="@style/mine_text_style"
+        android:text="Dialog样式" />
+
+    <View style="@style/divide_style" />
+
+    <TextView
+        android:id="@+id/richox_demo_native"
+        style="@style/mine_text_style"
+        android:text="Native样式" />
+
+    <View style="@style/divide_style" />
+
+    <TextView
+        android:id="@+id/richox_demo_entry"
+        style="@style/mine_text_style"
+        android:text="entry样式" />
+
+</LinearLayout>

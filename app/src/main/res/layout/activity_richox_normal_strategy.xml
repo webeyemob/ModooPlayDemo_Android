@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/demo_stage2_fetch_config"
+        style="@style/mine_text_style"
+        android:text="拉取配置" />
+
+    <View style="@style/divide_style" />
+
+    <TextView
+        android:id="@+id/demo_stage2_do_mission"
+        style="@style/mine_text_style"
+        android:text="提交任务" />
+
+    <View style="@style/divide_style" />
+
+    <TextView
+        android:id="@+id/demo_stage2_query_stage"
+        style="@style/mine_text_style"
+        android:text="查询资产" />
+
+    <View style="@style/divide_style" />
+
+    <TextView
+        android:id="@+id/demo_stage2_extreme_withdraw"
+        style="@style/mine_text_style"
+        android:text="极速提现" />
+
+    <View style="@style/divide_style" />
+
+    <TextView
+        android:id="@+id/demo_stage2_withdraw"
+        style="@style/mine_text_style"
+        android:text="普通提现" />
+
+
+</LinearLayout>

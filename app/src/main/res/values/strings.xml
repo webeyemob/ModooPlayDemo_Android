@@ -7,6 +7,7 @@
     <string name="privacy_policy">隐私政策</string>
     <string name="anti_addiction">游戏防沉迷</string>
     <string name="clear_cache">清除缓存</string>
+    <string name="richox_test">RichOX测试</string>
 
     <string name="anti_addiction_login">登录</string>
     <string name="anti_addiction_logout">登出</string>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/richox_demo_withdraw_wx_small_withdraw"
+        style="@style/mine_text_style"
+        android:text="微信秒提现" />
+
+    <View style="@style/divide_style" />
+
+    <TextView
+        android:id="@+id/richox_demo_withdraw_wx_big_withdraw"
+        style="@style/mine_text_style"
+        android:text="微信提现" />
+
+    <View style="@style/divide_style" />
+
+    <TextView
+        android:id="@+id/richox_demo_withdraw_wx_query_withdraw"
+        style="@style/mine_text_style"
+        android:text="提现记录查询" />
+
+</LinearLayout>

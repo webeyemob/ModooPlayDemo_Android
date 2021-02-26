@@ -2,6 +2,7 @@ package com.tgcenter.demo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -13,6 +14,7 @@ import com.nefarian.privacy.policy.IPrivacyPolicyCallback;
 import com.nefarian.privacy.policy.PrivacyPolicyHelper;
 import com.tgcenter.demo.ads.NetworkAdActivity;
 import com.tgcenter.demo.anti_addiction.AntiAddictionActivity;
+import com.tgcenter.demo.richox.RichOXMainActivity;
 import com.tgcenter.unified.sdk.api.InitConfig;
 import com.tgcenter.unified.sdk.api.TGCenter;
 
@@ -26,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private Button mUserAgreementButton;
     private Button mPrivacyPolicyButton;
     private Button mAntiAddictionButton;
+    private Button mRichOXButton;
     private Button mClearCacheButton;
 
     @Override
@@ -153,10 +156,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        mRichOXButton = findViewById(R.id.button_richox);
+        mRichOXButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("test", "go here");
+                Intent intent = new Intent(MainActivity.this, RichOXMainActivity.class);
+                startActivity(intent);
+            }
+        });
+
         mClearCacheButton = findViewById(R.id.button_clear_cache);
         mClearCacheButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("test", "go here clear");
                 clearCache();
             }
         });

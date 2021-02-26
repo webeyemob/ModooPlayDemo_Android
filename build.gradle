@@ -28,6 +28,18 @@ allprojects {
         maven { url "../Upload-Plugin" }
         maven { url "../Upload-Library" }
         maven { url "../Upload-Sdk" }
+        maven { url "../local_maven/Upload-RichOXBase" }
+        maven { url "../local_maven/Upload-RichOXFissionOpenInstall" }
+        maven { url "../local_maven/Upload-RichOXNormalStrategy" }
+        maven { url "../local_maven/Upload-RichOXSdkWeb" }
+        maven { url "../local_maven/Upload-RichOXSect" }
+        maven { url "../local_maven/Upload-RichOXStageStrategy" }
+        maven { url "../local_maven/Upload-RichOXStrategyFission" }
+
+        maven { url 'https://dl.bintray.com/richox/RichOX' }
+        maven { url 'https://dl.bintray.com/fission/fission' }
+        maven { url 'https://dl.bintray.com/wesdk/Modoosdk' }
+
     }
 }
 

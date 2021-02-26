@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/demo_stage_name"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:maxLines="2"
+        android:text="红包ID"
+        android:textColor="@android:color/holo_green_dark" />
+
+    <ProgressBar
+        android:id="@+id/demo_stage_progress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_weight="3" />
+
+    <TextView
+        android:id="@+id/demo_stage_submit"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:background="@android:color/holo_orange_light"
+        android:gravity="center"
+        android:text="领取任务"
+        android:textColor="@android:color/holo_blue_dark" />
+
+
+</LinearLayout>

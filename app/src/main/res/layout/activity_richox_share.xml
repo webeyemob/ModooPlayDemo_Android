@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/richox_demo_share_gen_scene"
+        style="@style/mine_text_style"
+        android:text="生成分享链接" />
+
+    <View style="@style/divide_style" />
+
+    <TextView
+        android:id="@+id/richox_demo_share_gen_qr_bytes"
+        style="@style/mine_text_style"
+        android:text="返回bytes" />
+
+    <View style="@style/divide_style" />
+
+    <TextView
+        android:id="@+id/richox_demo_share_gen_qr"
+        style="@style/mine_text_style"
+        android:text="返回bitmap" />
+
+    <View style="@style/divide_style" />
+
+    <ImageView
+        android:id="@+id/richox_demo_share_qr_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <View style="@style/divide_style" />
+
+    <TextView
+        android:id="@+id/richox_demo_share_restore_scene"
+        style="@style/mine_text_style"
+        android:text="还原分享参数" />
+
+</LinearLayout>
