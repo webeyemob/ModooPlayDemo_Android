@@ -7,7 +7,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.richox.base.CommonCallback;
-import com.richox.base.RichOXCommon;
+import com.richox.base.RichOX;
 import com.richox.base.RichOXData;
 import com.tgcenter.demo.R;
 import com.tgcenter.demo.ads.base.BaseActivity;
@@ -31,7 +31,7 @@ public class RichOXCommonDataActivity extends BaseActivity {
         mSaveDataButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!RichOXCommon.hasInitiated()) {
+                if (!RichOX.hasInitiated()) {
                     Toast.makeText(RichOXCommonDataActivity.this, "Not init, please init first", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -55,7 +55,7 @@ public class RichOXCommonDataActivity extends BaseActivity {
         mQueryDataButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!RichOXCommon.hasInitiated()) {
+                if (!RichOX.hasInitiated()) {
                     Toast.makeText(RichOXCommonDataActivity.this, "Not init, please init first", Toast.LENGTH_SHORT).show();
                     return;
                 }

@@ -10,7 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.richox.base.RichOXCommon;
+import com.richox.base.RichOX;
 import com.richox.strategy.ROXStageStrategy;
 import com.richox.strategy.mission.ResultCallback;
 import com.richox.strategy.mission.bean.StageItem;
@@ -104,7 +104,7 @@ public class StageAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 if (((int) item.getPercent()) == 100) {
-                    if (!TextUtils.isEmpty(RichOXCommon.getUserId())) {
+                    if (!TextUtils.isEmpty(RichOX.getUserId())) {
                         WithdrawInfo info = new WithdrawInfo.Builder().stageItemId(item.getId())
                                 .grade(0)
                                 .payMark("Test")
@@ -132,7 +132,7 @@ public class StageAdapter extends BaseAdapter {
                         ToastUtil.showToast(mActivity, "用户ID为空，请先登录");
                     }
                 } else {
-                    if (!TextUtils.isEmpty(RichOXCommon.getUserId())) {
+                    if (!TextUtils.isEmpty(RichOX.getUserId())) {
                         ROXStageStrategy.getInstance(mStrategyId).doMission(item.getId(), mMissionId, -1, new ResultCallback<List<StageItem>>() {
                             @Override
                             public void onSuccess(List<StageItem> response) {

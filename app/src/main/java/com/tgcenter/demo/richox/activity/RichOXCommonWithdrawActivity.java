@@ -7,7 +7,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.richox.base.CommonCallback;
-import com.richox.base.RichOXCommon;
+import com.richox.base.RichOX;
 import com.richox.base.RichOXWithDraw;
 import com.richox.base.bean.withdraw.WithdrawBean;
 import com.richox.base.bean.withdraw.WithdrawMission;
@@ -47,7 +47,7 @@ public class RichOXCommonWithdrawActivity extends BaseActivity {
         mWXSmallWithdrawButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!RichOXCommon.hasInitiated()) {
+                if (!RichOX.hasInitiated()) {
                     Toast.makeText(RichOXCommonWithdrawActivity.this, "Not init, please init first", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -69,7 +69,7 @@ public class RichOXCommonWithdrawActivity extends BaseActivity {
         mWXBigWithdrawButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!RichOXCommon.hasInitiated()) {
+                if (!RichOX.hasInitiated()) {
                     Toast.makeText(RichOXCommonWithdrawActivity.this, "Not init, please init first", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -92,7 +92,7 @@ public class RichOXCommonWithdrawActivity extends BaseActivity {
         mQueryWithdrawButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!RichOXCommon.hasInitiated()) {
+                if (!RichOX.hasInitiated()) {
                     Toast.makeText(RichOXCommonWithdrawActivity.this, "Not init, please init first", Toast.LENGTH_SHORT).show();
                     return;
                 }

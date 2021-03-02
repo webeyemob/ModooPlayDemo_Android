@@ -9,7 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.richox.base.CommonCallback;
-import com.richox.base.RichOXCommon;
+import com.richox.base.RichOX;
 import com.richox.base.RichOXUser;
 import com.richox.base.UserType;
 import com.richox.base.bean.user.SpecificUserInfo;
@@ -59,7 +59,7 @@ public class RichOXCommonUserActivity extends BaseActivity {
         mVisitorButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!RichOXCommon.hasInitiated()) {
+                if (!RichOX.hasInitiated()) {
                     Toast.makeText(RichOXCommonUserActivity.this, "Not init, please init first", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -106,7 +106,7 @@ public class RichOXCommonUserActivity extends BaseActivity {
         mWXRegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!RichOXCommon.hasInitiated()) {
+                if (!RichOX.hasInitiated()) {
                     Toast.makeText(RichOXCommonUserActivity.this, "Not init, please init first", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -132,7 +132,7 @@ public class RichOXCommonUserActivity extends BaseActivity {
         mAccountBindButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!RichOXCommon.hasInitiated()) {
+                if (!RichOX.hasInitiated()) {
                     Toast.makeText(RichOXCommonUserActivity.this, "Not init, please init first", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -158,7 +158,7 @@ public class RichOXCommonUserActivity extends BaseActivity {
         mGetSpecialUserButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!RichOXCommon.hasInitiated()) {
+                if (!RichOX.hasInitiated()) {
                     Toast.makeText(RichOXCommonUserActivity.this, "Not init, please init first", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -187,7 +187,7 @@ public class RichOXCommonUserActivity extends BaseActivity {
         mGetTokenButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!RichOXCommon.hasInitiated()) {
+                if (!RichOX.hasInitiated()) {
                     Toast.makeText(RichOXCommonUserActivity.this, "Not init, please init first", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -209,7 +209,7 @@ public class RichOXCommonUserActivity extends BaseActivity {
         mGetUserRanking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!RichOXCommon.hasInitiated()) {
+                if (!RichOX.hasInitiated()) {
                     Toast.makeText(RichOXCommonUserActivity.this, "Not init, please init first", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -235,7 +235,7 @@ public class RichOXCommonUserActivity extends BaseActivity {
         mGetUserButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!RichOXCommon.hasInitiated()) {
+                if (!RichOX.hasInitiated()) {
                     Toast.makeText(RichOXCommonUserActivity.this, "Not init, please init first", Toast.LENGTH_SHORT).show();
                     return;
                 }

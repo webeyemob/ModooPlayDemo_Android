@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.richox.sdk.RichOX;
+import com.richox.sdk.RichOXH5;
 import com.richox.sdk.core.InfoUpdateCallback;
 import com.richox.sdk.core.WeChatRegisterCallback;
 import com.richox.sdk.core.WeChatResultCallback;
@@ -38,16 +38,16 @@ public class RichOXH5Activity extends BaseActivity implements View.OnClickListen
     }
 
     private void initRox() {
-        RichOX.init(getApplicationContext());
+        RichOXH5.init(getApplicationContext());
 
-        RichOX.registerWeChatCallback(new WeChatRegisterCallback() {
+        RichOXH5.registerWeChatCallback(new WeChatRegisterCallback() {
             @Override
             public void registerWeChat(WeChatResultCallback callback) {
                 loginWeChat(callback);
             }
         });
 
-        RichOX.registerInfoUpdateCallback(new InfoUpdateCallback() {
+        RichOXH5.registerInfoUpdateCallback(new InfoUpdateCallback() {
             @Override
             public void updateInfo(int i, String s, int i1) {
             }

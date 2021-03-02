@@ -9,7 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.richox.sdk.RichOXError;
+import com.richox.sdk.RichOXH5Error;
 import com.richox.sdk.core.scene.NativeScene;
 import com.richox.sdk.core.scene.SceneListener;
 import com.tgcenter.demo.R;
@@ -59,7 +59,7 @@ public class RichOXH5NativeActivity extends BaseActivity {
                     }
 
                     @Override
-                    public void onLoadFailed(final RichOXError error) {
+                    public void onLoadFailed(final RichOXH5Error error) {
                         Log.d(TAG, "on onLoadFailed");
                         runOnUiThread(new Runnable() {
                             @Override
@@ -80,7 +80,7 @@ public class RichOXH5NativeActivity extends BaseActivity {
                     }
 
                     @Override
-                    public void onRenderFailed(RichOXError error) {
+                    public void onRenderFailed(RichOXH5Error error) {
 
                     }
 

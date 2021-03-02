@@ -6,7 +6,7 @@ import android.util.Log;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.richox.base.RichOXCommon;
+import com.richox.base.RichOX;
 import com.richox.strategy.ROXStageStrategy;
 import com.richox.strategy.mission.ResultCallback;
 import com.richox.strategy.mission.bean.StageItem;
@@ -60,7 +60,7 @@ public class RichOXStrategyFissionActivity extends BaseActivity {
     }
 
     private void sync() {
-        if (!TextUtils.isEmpty(RichOXCommon.getUserId())) {
+        if (!TextUtils.isEmpty(RichOX.getUserId())) {
             ROXStageStrategy.getInstance(STRATEGY_ID).syncList(new ResultCallback<List<StageItem>>() {
 
                 @Override

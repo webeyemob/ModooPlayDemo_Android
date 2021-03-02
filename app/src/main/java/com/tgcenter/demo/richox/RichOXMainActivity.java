@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.richox.base.CommonBuilder;
 import com.richox.base.EventCallback;
 import com.richox.base.InitCallback;
-import com.richox.base.RichOXCommon;
+import com.richox.base.RichOX;
 import com.tgcenter.demo.R;
 import com.tgcenter.demo.ads.base.BaseActivity;
 import com.tgcenter.demo.richox.activity.RichOXCommonActivity;
@@ -130,7 +130,7 @@ public class RichOXMainActivity extends BaseActivity {
     }
 
     private void initRichOXCommon() {
-        RichOXCommon.setTestMode(true);
+        RichOX.setTestMode(true);
         CommonBuilder builder = new CommonBuilder.Builder()
                 .setAppId(Constants.APP_ID)
                 .setAppKey("nnDlq82zDl")
@@ -143,7 +143,7 @@ public class RichOXMainActivity extends BaseActivity {
                 .setPlatformId("S150")
                 .setChannel("test")
                 .build();
-        RichOXCommon.init(getApplicationContext(), builder, new InitCallback() {
+        RichOX.init(getApplicationContext(), builder, new InitCallback() {
             @Override
             public void onSuccess() {
                 Log.d(Constants.TAG, "Init success");
@@ -154,7 +154,7 @@ public class RichOXMainActivity extends BaseActivity {
                 Log.d(Constants.TAG, "Init result code is : " + code + " msg is : " + msg);
             }
         });
-        RichOXCommon.registerEventCallback(new EventCallback() {
+        RichOX.registerEventCallback(new EventCallback() {
             @Override
             public void onEvent(String name) {
                 Log.d("event", "the name is " + name);
@@ -202,7 +202,7 @@ public class RichOXMainActivity extends BaseActivity {
                 }
             }
         });
-        RichOXCommon.genDefaultDeviceId(this);
+        RichOX.genDefaultDeviceId(this);
         ModooHelper.init(this);
     }
 

@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.richox.sdk.RichOXError;
+import com.richox.sdk.RichOXH5Error;
 import com.richox.sdk.core.scene.DialogEnterCallback;
 import com.richox.sdk.core.scene.DialogScene;
 import com.richox.sdk.core.scene.SceneListener;
@@ -42,7 +42,7 @@ public class RichOXH5DialogActivity extends BaseActivity {
             }
 
             @Override
-            public void onLoadFailed(final RichOXError error) {
+            public void onLoadFailed(final RichOXH5Error error) {
                 Log.d(TAG, "on onLoadFailed");
                 runOnUiThread(new Runnable() {
                     @Override
@@ -63,7 +63,7 @@ public class RichOXH5DialogActivity extends BaseActivity {
             }
 
             @Override
-            public void onRenderFailed(RichOXError error) {
+            public void onRenderFailed(RichOXH5Error error) {
 
             }
 

@@ -7,7 +7,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.richox.base.CommonCallback;
-import com.richox.base.RichOXCommon;
+import com.richox.base.RichOX;
 import com.richox.base.RichOXTask;
 import com.richox.base.bean.task.RecentDaysTaskBean;
 import com.richox.base.bean.task.TaskCoinsBean;
@@ -48,7 +48,7 @@ public class RichOXCommonTaskActivity extends BaseActivity {
         mQueryAllTasks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!RichOXCommon.hasInitiated()) {
+                if (!RichOX.hasInitiated()) {
                     Toast.makeText(RichOXCommonTaskActivity.this, "Not init, please init first", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -74,7 +74,7 @@ public class RichOXCommonTaskActivity extends BaseActivity {
         mSubmitTaskButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!RichOXCommon.hasInitiated()) {
+                if (!RichOX.hasInitiated()) {
                     Toast.makeText(RichOXCommonTaskActivity.this, "Not init, please init first", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -115,7 +115,7 @@ public class RichOXCommonTaskActivity extends BaseActivity {
         mQueryTaskRecordsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!RichOXCommon.hasInitiated()) {
+                if (!RichOX.hasInitiated()) {
                     Toast.makeText(RichOXCommonTaskActivity.this, "Not init, please init first", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -144,7 +144,7 @@ public class RichOXCommonTaskActivity extends BaseActivity {
         mQuerySubmitCountsTasks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!RichOXCommon.hasInitiated()) {
+                if (!RichOX.hasInitiated()) {
                     Toast.makeText(RichOXCommonTaskActivity.this, "Not init, please init first", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -166,7 +166,7 @@ public class RichOXCommonTaskActivity extends BaseActivity {
         mQueryTodayCoinsTasks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!RichOXCommon.hasInitiated()) {
+                if (!RichOX.hasInitiated()) {
                     Toast.makeText(RichOXCommonTaskActivity.this, "Not init, please init first", Toast.LENGTH_SHORT).show();
                     return;
                 }
