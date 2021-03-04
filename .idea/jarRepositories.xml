@@ -156,5 +156,35 @@
       <option name="name" value="maven22" />
       <option name="url" value="https://dl.bintray.com/mintegral-official/Andorid_ad_SDK_for_china_support" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven24" />
+      <option name="name" value="maven24" />
+      <option name="url" value="https://dl.bintray.com/mintegral-official/mintegral_ad_sdk_android_for_oversea" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven25" />
+      <option name="name" value="maven25" />
+      <option name="url" value="https://dl.bintray.com/wesdk/Modoosdk" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven23" />
+      <option name="name" value="maven23" />
+      <option name="url" value="https://dl.bintray.com/mintegral-official/Andorid_ad_SDK_for_china" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven4" />
+      <option name="name" value="maven4" />
+      <option name="url" value="file:$PROJECT_DIR$/../Upload-VegaSdk" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven4" />
+      <option name="name" value="maven4" />
+      <option name="url" value="file:$PROJECT_DIR$/Upload-VegaSdk/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven4" />
+      <option name="name" value="maven4" />
+      <option name="url" value="file:$PROJECT_DIR$/Upload-VegaSdk" />
+    </remote-repository>
   </component>
 </project>

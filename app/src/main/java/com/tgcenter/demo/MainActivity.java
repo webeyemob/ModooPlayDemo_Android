@@ -11,17 +11,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.antiaddiction.sdk.AntiAddictionKit;
 import com.nefarian.privacy.policy.IPrivacyPolicyCallback;
 import com.nefarian.privacy.policy.PrivacyPolicyHelper;
+import com.taurusx.ads.core.api.utils.LogUtil;
 import com.tgcenter.demo.ads.NetworkAdActivity;
 import com.tgcenter.demo.anti_addiction.AntiAddictionActivity;
 import com.tgcenter.unified.sdk.api.InitConfig;
 import com.tgcenter.unified.sdk.api.TGCenter;
+import com.tgcenter.unified.sdk.h.WeChatHelper;
+import com.we.modoo.callback.LoginCallback;
+import com.we.modoo.core.LoginType;
 
 public class MainActivity extends AppCompatActivity {
+
+    private final String TAG = "MainActivity";
 
     // 产品渠道
     public static final String Channle = "channel";
 
     private Button mDebugPageButton;
+    private Button mWeChatButton;
     private Button mAdTestButton;
     private Button mUserAgreementButton;
     private Button mPrivacyPolicyButton;
@@ -111,6 +118,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        mWeChatButton = findViewById(R.id.button_wechat);
+        mWeChatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                weChatLogin();
+            }
+        });
+
         mAdTestButton = findViewById(R.id.button_ad_test);
         mAdTestButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -160,6 +175,32 @@ public class MainActivity extends AppCompatActivity {
                 clearCache();
             }
         });
+    }
+
+    // 微信登录
+    private void weChatLogin() {
+        // 设置微信登录回调
+        WeChatHelper.setLoginCallback(new LoginCallback() {
+            @Override
+            public void loginSuccess(String code) {
+                // 登录成功
+                LogUtil.d(TAG, "loginSuccess, code: " + code);
+            }
+
+            @Override
+            public void loginFailed(String result) {
+                // 登录失败
+                LogUtil.d(TAG, "loginFailed, result: " + result);
+            }
+
+            @Override
+            public void loginCancel(String result) {
+                // 取消登录
+                LogUtil.d(TAG, "loginCancel, result: " + result);
+            }
+        });
+        // 登录微信，参数固定为 LoginType.Wechat
+        WeChatHelper.login(LoginType.Wechat);
     }
 
     // 清除 SDK 的所有数据，包括《用户协议与隐私政策》的授权状态、用户信息等

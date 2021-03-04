@@ -84,6 +84,8 @@ lint/outputs/
 lint/tmp/
 # lint/reports/
 
+*.keystore
+
 /Upload-Plugin
 /Upload-Sdk
 /Upload-Library

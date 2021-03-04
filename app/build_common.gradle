@@ -22,6 +22,9 @@ tgCenter {
         // 游戏防沉迷
         antiAddiction true
 
+        // 微信登录
+        weChat true
+
         // 广告
         taurusXAds true
         // 不同的渠道需要集成的 Network 不一样，请务必正确配置
