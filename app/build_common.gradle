@@ -25,6 +25,9 @@ tgCenter {
         // 微信登录
         weChat true
 
+        // 客服系统
+        udesk true
+
         // 广告
         taurusXAds true
         // 不同的渠道需要集成的 Network 不一样，请务必正确配置
@@ -63,6 +66,11 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     repositories {

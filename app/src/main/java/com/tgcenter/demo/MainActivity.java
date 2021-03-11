@@ -16,6 +16,7 @@ import com.tgcenter.demo.ads.NetworkAdActivity;
 import com.tgcenter.demo.anti_addiction.AntiAddictionActivity;
 import com.tgcenter.unified.sdk.api.InitConfig;
 import com.tgcenter.unified.sdk.api.TGCenter;
+import com.tgcenter.unified.sdk.h.UdeskHelper;
 import com.tgcenter.unified.sdk.h.WeChatHelper;
 import com.we.modoo.callback.LoginCallback;
 import com.we.modoo.core.LoginType;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private Button mUserAgreementButton;
     private Button mPrivacyPolicyButton;
     private Button mAntiAddictionButton;
+    private Button mUdeskButton;
     private Button mClearCacheButton;
 
     @Override
@@ -168,6 +170,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        mUdeskButton = findViewById(R.id.button_udesk);
+        mUdeskButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                enterUdesk();
+            }
+        });
+
         mClearCacheButton = findViewById(R.id.button_clear_cache);
         mClearCacheButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -175,6 +185,11 @@ public class MainActivity extends AppCompatActivity {
                 clearCache();
             }
         });
+    }
+
+    // 进入客服页面
+    private void enterUdesk() {
+        UdeskHelper.enterUdesk(MainActivity.this);
     }
 
     // 微信登录

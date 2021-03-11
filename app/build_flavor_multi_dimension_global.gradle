@@ -42,6 +42,18 @@ android {
         multiDexEnabled true
     }
 
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     // 下面的示例中，在两个 dimension 中都有配置，则优先使用 "channel" 中的配置
     // 只有当 "channel" 中无配置时，才使用 "price" 中的配置
     // 如果都无配置，则使用全局配置
@@ -106,13 +118,6 @@ android {
 
         free {
             dimension "price"
-        }
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 }

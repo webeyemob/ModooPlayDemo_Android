@@ -79,6 +79,14 @@
                 android:textSize="20dp" />
 
             <Button
+                android:id="@+id/button_udesk"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/udesk"
+                android:textSize="20dp" />
+
+            <Button
                 android:id="@+id/button_clear_cache"
                 android:layout_width="match_parent"
                 android:layout_height="64dp"
