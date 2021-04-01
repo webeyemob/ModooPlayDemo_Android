@@ -20,7 +20,7 @@ tgCenter {
         rangersAppLog_Lite_cn true
 
         // 游戏防沉迷
-        antiAddiction true
+        gameAntiAddiction true
 
         // 微信登录
         weChat true
@@ -61,10 +61,20 @@ android {
         multiDexEnabled true
     }
 
+    signingConfigs {
+        config {
+            storeFile file('../debug.jks')
+            storePassword 'android'
+            keyAlias 'debug'
+            keyPassword 'android'
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
     }
 

@@ -8,7 +8,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.antiaddiction.sdk.AntiAddictionKit;
 import com.nefarian.privacy.policy.IPrivacyPolicyCallback;
 import com.nefarian.privacy.policy.PrivacyPolicyHelper;
 import com.taurusx.ads.core.api.utils.LogUtil;
@@ -221,18 +220,5 @@ public class MainActivity extends AppCompatActivity {
     // 清除 SDK 的所有数据，包括《用户协议与隐私政策》的授权状态、用户信息等
     private void clearCache() {
         TGCenter.clearCache(MainActivity.this);
-    }
-
-    // 为保证用户的时长统计准确，游戏需要在运行的主 Activity 的 onResume() 和 onStop() 的方法中调用如下接口
-    @Override
-    protected void onResume() {
-        super.onResume();
-        AntiAddictionKit.onResume();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        AntiAddictionKit.onStop();
     }
 }

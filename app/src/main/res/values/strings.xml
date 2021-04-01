@@ -10,10 +10,11 @@
     <string name="udesk">客服系统</string>
     <string name="clear_cache">清除缓存</string>
 
-    <string name="anti_addiction_login">登录</string>
-    <string name="anti_addiction_logout">登出</string>
-    <string name="anti_addiction_pay">支付</string>
-    <string name="anti_addiction_chat">聊天</string>
-    <string name="anti_addiction_open_real_name">打开实名认证</string>
+    <string name="anti_addiction_real_name">实名认证</string>
+    <string name="anti_addiction_real_name_customui">实名认证（应用自定义 UI）</string>
+    <string name="anti_addiction_logout">注销</string>
+    <string name="anti_addiction_update_user">更新用户</string>
+    <string name="anti_addiction_name">姓名</string>
+    <string name="anti_addiction_idNumber">身份证</string>
 
 </resources>
