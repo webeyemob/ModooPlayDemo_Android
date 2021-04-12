@@ -13,6 +13,7 @@ import com.nefarian.privacy.policy.PrivacyPolicyHelper;
 import com.taurusx.ads.core.api.utils.LogUtil;
 import com.tgcenter.demo.ads.NetworkAdActivity;
 import com.tgcenter.demo.anti_addiction.AntiAddictionActivity;
+import com.tgcenter.unified.antiaddiction.api.AntiAddiction;
 import com.tgcenter.unified.sdk.api.InitConfig;
 import com.tgcenter.unified.sdk.api.TGCenter;
 import com.tgcenter.unified.sdk.h.UdeskHelper;
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private Button mPrivacyPolicyButton;
     private Button mAntiAddictionButton;
     private Button mUdeskButton;
-    private Button mClearCacheButton;
+    private Button mLogoutButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -177,11 +178,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mClearCacheButton = findViewById(R.id.button_clear_cache);
-        mClearCacheButton.setOnClickListener(new View.OnClickListener() {
+        mLogoutButton = findViewById(R.id.button_logout);
+        mLogoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clearCache();
+                logout();
             }
         });
     }
@@ -218,7 +219,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // 清除 SDK 的所有数据，包括《用户协议与隐私政策》的授权状态、用户信息等
-    private void clearCache() {
+    private void logout() {
         TGCenter.clearCache(MainActivity.this);
+        AntiAddiction.getInstance().logout();
     }
 }

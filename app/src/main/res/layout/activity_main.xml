@@ -87,11 +87,11 @@
                 android:textSize="20dp" />
 
             <Button
-                android:id="@+id/button_clear_cache"
+                android:id="@+id/button_logout"
                 android:layout_width="match_parent"
                 android:layout_height="64dp"
                 android:layout_marginBottom="10dp"
-                android:text="@string/clear_cache"
+                android:text="@string/logout"
                 android:textSize="20dp" />
         </LinearLayout>
     </ScrollView>

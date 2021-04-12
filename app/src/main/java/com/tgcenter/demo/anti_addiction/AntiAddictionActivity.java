@@ -27,7 +27,6 @@ public class AntiAddictionActivity extends AppCompatActivity {
     private Button mRealNameButton;
     private Button mRealNameCustomUIButton;
     private Button mUpdateUserButton;
-    private Button mLogoutButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -80,14 +79,6 @@ public class AntiAddictionActivity extends AppCompatActivity {
                 updateUserInfo(AntiAddiction.getInstance().getUser());
             }
         });
-
-        mLogoutButton = findViewById(R.id.button_logout);
-        mLogoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                logout();
-            }
-        });
     }
 
     // 设置时间限制
@@ -115,13 +106,6 @@ public class AntiAddictionActivity extends AppCompatActivity {
                 updateUserInfo(user);
             }
         });
-    }
-
-    // 注销
-    private void logout() {
-        // 当用户在游戏内点击登出或退出账号时调用该接口
-        AntiAddiction.getInstance().logout();
-        updateUserInfo(AntiAddiction.getInstance().getUser());
     }
 
     @Override

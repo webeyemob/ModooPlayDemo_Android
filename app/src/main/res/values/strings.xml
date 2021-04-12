@@ -8,11 +8,10 @@
     <string name="privacy_policy">隐私政策</string>
     <string name="anti_addiction">游戏防沉迷</string>
     <string name="udesk">客服系统</string>
-    <string name="clear_cache">清除缓存</string>
+    <string name="logout">注销</string>
 
     <string name="anti_addiction_real_name">实名认证</string>
     <string name="anti_addiction_real_name_customui">实名认证（应用自定义 UI）</string>
-    <string name="anti_addiction_logout">注销</string>
     <string name="anti_addiction_update_user">更新用户</string>
     <string name="anti_addiction_name">姓名</string>
     <string name="anti_addiction_idNumber">身份证</string>
