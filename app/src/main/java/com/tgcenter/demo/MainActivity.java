@@ -17,6 +17,7 @@ import com.nefarian.privacy.policy.PrivacyPolicyHelper;
 import com.tgcenter.demo.ads.NetworkAdActivity;
 import com.tgcenter.demo.anti_addiction.AntiAddictionActivity;
 import com.tgcenter.unified.antiaddiction.api.AntiAddiction;
+import com.tgcenter.demo.richox.RichOXMainActivity;
 import com.tgcenter.unified.sdk.api.InitConfig;
 import com.tgcenter.unified.sdk.api.PermissionUtil;
 import com.tgcenter.unified.sdk.api.TGCenter;
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private Button mAntiAddictionButton;
     private Button mUdeskButton;
     private Button mLogoutButton;
+    private Button mRichOXButton;
 
     private static final String[] PERMISSIONS = {
             Manifest.permission.READ_EXTERNAL_STORAGE,
@@ -211,6 +213,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 enterUdesk();
+            }
+        });
+
+        mRichOXButton = findViewById(R.id.button_richox);
+        mRichOXButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("test", "go here");
+                Intent intent = new Intent(MainActivity.this, RichOXMainActivity.class);
+                startActivity(intent);
             }
         });
 

@@ -87,6 +87,14 @@
                 android:textSize="20dp" />
 
             <Button
+                android:id="@+id/button_richox"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/richox_test"
+                android:textSize="20dp" />
+
+            <Button
                 android:id="@+id/button_logout"
                 android:layout_width="match_parent"
                 android:layout_height="64dp"

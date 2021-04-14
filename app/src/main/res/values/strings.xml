@@ -9,6 +9,7 @@
     <string name="anti_addiction">游戏防沉迷</string>
     <string name="udesk">客服系统</string>
     <string name="logout">注销</string>
+    <string name="richox_test">RichOX测试</string>
 
     <string name="anti_addiction_real_name">实名认证</string>
     <string name="anti_addiction_real_name_customui">实名认证（应用自定义 UI）</string>

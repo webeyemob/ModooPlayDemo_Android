@@ -10,6 +10,11 @@ buildscript {
 
         // ModooPlay
         maven { url "https://bitbucket.org/sdkcenter/sdkcenter/raw/release" }
+
+        maven { url "https://dl.bintray.com/tgcenter/Unified" }
+        // RichOX
+        maven { url "https://bitbucket.org/sdkcenter/sdkcenter/raw/release" }
+        maven { url 'https://dl.bintray.com/wesdk/Modoosdk' }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.0.2"
@@ -29,6 +34,10 @@ allprojects {
         maven { url "../Upload-Library" }
         maven { url "../Upload-Sdk" }
         maven { url "../Upload-AntiAddiction" }
+        // RichOX
+        maven { url "https://bitbucket.org/sdkcenter/sdkcenter/raw/release" }
+        maven { url 'https://dl.bintray.com/wesdk/Modoosdk' }
+
     }
 }
 

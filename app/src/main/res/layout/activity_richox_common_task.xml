@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/richox_demo_task_query_all_tasks"
+        style="@style/mine_text_style"
+        android:text="激励任务信息获取" />
+
+    <View style="@style/divide_style" />
+
+    <TextView
+        android:id="@+id/richox_demo_task_submit_task"
+        style="@style/mine_text_style"
+        android:text="激励任务奖励领取" />
+
+    <View style="@style/divide_style" />
+
+
+    <TextView
+        android:id="@+id/richox_demo_task_submit_double"
+        style="@style/mine_text_style"
+        android:text="激励任务奖励翻倍" />
+
+    <View style="@style/divide_style" />
+
+
+    <TextView
+        android:id="@+id/richox_demo_task_query_task"
+        style="@style/mine_text_style"
+        android:text="激励任务记录查询" />
+
+    <View style="@style/divide_style" />
+
+    <TextView
+        android:id="@+id/richox_demo_task_query_submit_count"
+        style="@style/mine_text_style"
+        android:text="激励任务数量查询" />
+
+    <View style="@style/divide_style" />
+
+    <TextView
+        android:id="@+id/richox_demo_task_query_today_coins"
+        style="@style/mine_text_style"
+        android:text="今日金币获取信息查询" />
+
+</LinearLayout>

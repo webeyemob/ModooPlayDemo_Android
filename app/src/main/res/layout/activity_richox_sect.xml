@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/richox_demo_sect_get_tong_info"
+                style="@style/mine_text_style"
+                android:text="获取宗门信息" />
+
+            <View style="@style/divide_style" />
+
+            <TextView
+                android:id="@+id/richox_demo_sect_get_students"
+                style="@style/mine_text_style"
+                android:text="分页获取某级弟子信息" />
+
+            <View style="@style/divide_style" />
+
+            <TextView
+                android:id="@+id/richox_demo_sect_get_student_detail"
+                style="@style/mine_text_style"
+                android:text="获取弟子详细信息" />
+
+            <View style="@style/divide_style" />
+
+            <TextView
+                android:id="@+id/richox_demo_sect_gen_star"
+                style="@style/mine_text_style"
+                android:text="产生贡献值" />
+
+            <View style="@style/divide_style" />
+
+            <TextView
+                android:id="@+id/richox_demo_sect_get_star"
+                style="@style/mine_text_style"
+                android:text="领取贡献值" />
+
+            <View style="@style/divide_style" />
+
+            <TextView
+                android:id="@+id/richox_demo_sect_get_star_all"
+                style="@style/mine_text_style"
+                android:text="领取所有贡献值" />
+
+            <View style="@style/divide_style" />
+
+            <TextView
+                android:id="@+id/richox_demo_sect_get_invite_config_list"
+                style="@style/mine_text_style"
+                android:text="获取招募奖励配置" />
+
+
+            <View style="@style/divide_style" />
+
+            <TextView
+                android:id="@+id/richox_demo_sect_get_invite_award"
+                style="@style/mine_text_style"
+                android:text="领取招募奖励" />
+
+            <View style="@style/divide_style" />
+
+            <TextView
+                android:id="@+id/richox_demo_sect_bind_inviter"
+                style="@style/mine_text_style"
+                android:text="异步绑定邀请者" />
+
+            <View style="@style/divide_style" />
+
+            <TextView
+                android:id="@+id/richox_demo_sect_get_star_day_record"
+                style="@style/mine_text_style"
+                android:text="获取贡献记录(按天)" />
+
+            <View style="@style/divide_style" />
+
+            <TextView
+                android:id="@+id/richox_demo_sect_get_red_packet_record"
+                style="@style/mine_text_style"
+                android:text="获取红包记录" />
+
+            <View style="@style/divide_style" />
+
+            <TextView
+                android:id="@+id/richox_demo_sect_transform"
+                style="@style/mine_text_style"
+                android:text="进行现金兑换" />
+
+            <View style="@style/divide_style" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

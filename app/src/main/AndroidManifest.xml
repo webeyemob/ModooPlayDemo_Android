@@ -73,5 +73,46 @@
             android:launchMode="singleTask"
             android:theme="@style/Theme.AppCompat.Dialog" />
 
+        <activity android:name=".richox.RichOXMainActivity"/>
+
+        <activity android:name=".richox.activity.RichOXH5Activity" />
+
+        <activity android:name=".richox.activity.RichOXH5FloatActivity" />
+
+        <activity android:name=".richox.activity.RichOXH5DialogActivity" />
+
+        <activity android:name=".richox.activity.RichOXH5NativeActivity" />
+
+        <activity android:name=".richox.activity.RichOXH5EntryActivity" />
+
+        <activity android:name=".richox.activity.RichOXCommonActivity" />
+
+        <activity android:name=".richox.activity.RichOXCommonUserActivity" />
+
+        <activity android:name=".richox.activity.RichOXCommonTaskActivity" />
+
+        <activity android:name=".richox.activity.RichOXCommonDataActivity" />
+
+        <activity android:name=".richox.activity.RichOXCommonWithdrawActivity" />
+
+        <activity android:name=".richox.activity.RichOXStrategyFissionActivity" />
+
+        <activity android:name=".richox.activity.RichOXStageStrategyActivity" />
+
+        <activity android:name=".richox.activity.RichOXNormalStrategyActivity" />
+
+        <activity android:name=".richox.activity.RichOXShareActivity" />
+
+        <activity android:name=".richox.activity.RichOXSectActivity" />
+
+        <activity-alias
+            android:name="${applicationId}.wxapi.WXEntryActivity"
+            android:exported="true"
+            android:targetActivity="com.we.modoo.core.WXEntryActivity" />
+
+        <meta-data
+            android:name="com.openinstall.APP_KEY"
+            android:value="qqmerp" />
+
     </application>
 </manifest>

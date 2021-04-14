@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/demo_activity_richox_common"
+        style="@style/mine_text_style"
+        android:text="基础功能" />
+
+    <View style="@style/divide_style" />
+
+    <TextView
+        android:id="@+id/demo_activity_richox_h5"
+        style="@style/mine_text_style"
+        android:text="H5活动" />
+
+    <View style="@style/divide_style" />
+
+    <TextView
+        android:id="@+id/demo_activity_richox_strategy"
+        style="@style/mine_text_style"
+        android:text="阶梯红包策略（Fission)" />
+
+    <View style="@style/divide_style" />
+
+    <TextView
+        android:id="@+id/demo_activity_richox_strategy2"
+        style="@style/mine_text_style"
+        android:text="阶梯红包策略" />
+
+    <View style="@style/divide_style" />
+
+    <TextView
+        android:id="@+id/demo_activity_richox_normal_strategy"
+        style="@style/mine_text_style"
+        android:text="通用红包策略" />
+
+    <View style="@style/divide_style" />
+
+    <TextView
+        android:id="@+id/demo_activity_richox_share"
+        style="@style/mine_text_style"
+        android:text="用户分享" />
+
+    <View style="@style/divide_style" />
+
+    <TextView
+        android:id="@+id/demo_activity_richox_sect"
+        style="@style/mine_text_style"
+        android:text="用户裂变" />
+
+</LinearLayout>
