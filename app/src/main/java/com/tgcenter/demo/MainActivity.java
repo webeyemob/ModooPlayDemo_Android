@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
         // 初始化的流程：显示用户协议和隐私政策 -> 请求权限 -> 初始化
         // 检查用户是否同意了《用户协议和隐私政策》，如果同意则直接请求权限，否则需要弹窗征得用户同意
-        if (TGCenter.isUserAgreePolicy(this)) {
+        if (PrivacyPolicyHelper.isUserAgreePolicy(this)) {
             // 用户已同意，请求权限
             requestPermissions();
         } else {
