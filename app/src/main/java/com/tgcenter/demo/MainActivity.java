@@ -1,16 +1,21 @@
 package com.tgcenter.demo;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.nefarian.privacy.policy.IPrivacyPolicyCallback;
 import com.nefarian.privacy.policy.PrivacyPolicyHelper;
-import com.taurusx.ads.core.api.utils.LogUtil;
+import com.satori.sdk.io.event.core.utils.PermissionUtil;
 import com.tgcenter.demo.ads.NetworkAdActivity;
 import com.tgcenter.demo.anti_addiction.AntiAddictionActivity;
 import com.tgcenter.unified.antiaddiction.api.AntiAddiction;
@@ -37,6 +42,13 @@ public class MainActivity extends AppCompatActivity {
     private Button mUdeskButton;
     private Button mLogoutButton;
 
+    private static final String[] PERMISSIONS = {
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.READ_PHONE_STATE
+    };
+    private static final int PERMISSION_REQUEST_CODE = 0x1000;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,16 +56,41 @@ public class MainActivity extends AppCompatActivity {
 
         initView();
 
-        // 检查用户是否同意了《用户协议和隐私政策》，如果同意则直接初始化，否则需要弹窗征得用户同意
+        // 初始化的流程：显示用户协议和隐私政策 -> 请求权限 -> 初始化
+        // 检查用户是否同意了《用户协议和隐私政策》，如果同意则直接请求权限，否则需要弹窗征得用户同意
         if (TGCenter.isUserAgreePolicy(this)) {
-            // 用户已同意，初始化
-            initModooPlay();
+            // 用户已同意，请求权限
+            requestPermissions();
         } else {
             // 用户未同意
             // 展示默认的对话框
             showDefaultPolicyDialog();
             // 或者：展示 App 根据产品风格自定义的对话框
             // showCustomPolicyDialog();
+        }
+    }
+
+    // 请求权限
+    private void requestPermissions() {
+        if (!PermissionUtil.checkSelfPermissions(this, PERMISSIONS)) {
+            Log.d(TAG, "requestPermissions");
+            // 未获得相关权限，请求权限
+            ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_REQUEST_CODE);
+        } else {
+            Log.d(TAG, "has Permissions");
+            // 已获取相关权限，初始化
+            initModooPlay();
+        }
+    }
+
+    // 请求权限结束的回调
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            Log.d(TAG, "onRequestPermissionsResult");
+            // 请求权限结束，不论用户是否同意使用权限，都要初始化
+            initModooPlay();
         }
     }
 
@@ -109,11 +146,11 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * 处理用户点击对话框按钮的结果。
-     * 用户同意，初始化；用户不同意，进行提示。
+     * 用户同意，请求权限；用户不同意，进行提示。
      */
     private void dealDialogAgreeResult(boolean agree) {
         if (agree) {
-            initModooPlay();
+            requestPermissions();
         } else {
             Toast.makeText(MainActivity.this, "您需要阅读并同意后才可以使用本应用", Toast.LENGTH_SHORT).show();
         }
@@ -199,19 +236,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void loginSuccess(String code) {
                 // 登录成功
-                LogUtil.d(TAG, "loginSuccess, code: " + code);
+                Log.d(TAG, "loginSuccess, code: " + code);
             }
 
             @Override
             public void loginFailed(String result) {
                 // 登录失败
-                LogUtil.d(TAG, "loginFailed, result: " + result);
+                Log.d(TAG, "loginFailed, result: " + result);
             }
 
             @Override
             public void loginCancel(String result) {
                 // 取消登录
-                LogUtil.d(TAG, "loginCancel, result: " + result);
+                Log.d(TAG, "loginCancel, result: " + result);
             }
         });
         // 登录微信，参数固定为 LoginType.Wechat
