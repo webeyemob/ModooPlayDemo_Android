@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.nefarian.privacy.policy.BasePrivacyDialog;
 import com.nefarian.privacy.policy.IPrivacyPolicyCallback;
+import com.nefarian.privacy.policy.dialog.BasePrivacyDialog;
 
 public class CustomPrivacyDialog extends BasePrivacyDialog {
 

@@ -211,5 +211,35 @@
       <option name="name" value="maven" />
       <option name="url" value="https://bitbucket.org/sdkcenter/sdkcenter/raw/release" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven5" />
+      <option name="name" value="maven5" />
+      <option name="url" value="file:$PROJECT_DIR$/../Upload-Core" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven6" />
+      <option name="name" value="maven6" />
+      <option name="url" value="file:$PROJECT_DIR$/../Upload-Go" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven6" />
+      <option name="name" value="maven6" />
+      <option name="url" value="file:$PROJECT_DIR$/Upload-Go/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven5" />
+      <option name="name" value="maven5" />
+      <option name="url" value="file:$PROJECT_DIR$/Upload-Core/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven5" />
+      <option name="name" value="maven5" />
+      <option name="url" value="file:$PROJECT_DIR$/Upload-Core" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven6" />
+      <option name="name" value="maven6" />
+      <option name="url" value="file:$PROJECT_DIR$/Upload-Go" />
+    </remote-repository>
   </component>
 </project>
