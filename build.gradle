@@ -9,7 +9,7 @@ buildscript {
         jcenter()
 
         // ModooPlay
-        maven { url "https://dl.bintray.com/tgcenter/Unified" }
+        maven { url "https://bitbucket.org/sdkcenter/sdkcenter/raw/release" }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.0.2"

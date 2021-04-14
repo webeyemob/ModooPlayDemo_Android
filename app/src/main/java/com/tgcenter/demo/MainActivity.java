@@ -11,15 +11,14 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import com.nefarian.privacy.policy.IPrivacyPolicyCallback;
 import com.nefarian.privacy.policy.PrivacyPolicyHelper;
-import com.satori.sdk.io.event.core.utils.PermissionUtil;
 import com.tgcenter.demo.ads.NetworkAdActivity;
 import com.tgcenter.demo.anti_addiction.AntiAddictionActivity;
 import com.tgcenter.unified.antiaddiction.api.AntiAddiction;
 import com.tgcenter.unified.sdk.api.InitConfig;
+import com.tgcenter.unified.sdk.api.PermissionUtil;
 import com.tgcenter.unified.sdk.api.TGCenter;
 import com.tgcenter.unified.sdk.h.UdeskHelper;
 import com.tgcenter.unified.sdk.h.WeChatHelper;
