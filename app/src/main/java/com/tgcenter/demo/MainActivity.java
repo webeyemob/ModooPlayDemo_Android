@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private final String TAG = "MainActivity";
 
     // 产品渠道
-    public static final String Channle = "channel";
+    public static final String Channel = "channel";
 
     private Button mDebugPageButton;
     private Button mWeChatButton;
@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         TGCenter.init(MainActivity.this,
                 InitConfig.newBuilder()
                         .setDebugMode(BuildConfig.DEBUG)
-                        .setChannel(Channle)
+                        .setChannel(Channel)
                         .build());
     }
 
