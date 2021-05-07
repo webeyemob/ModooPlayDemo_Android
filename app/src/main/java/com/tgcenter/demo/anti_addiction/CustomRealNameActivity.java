@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.tgcenter.demo.R;
 import com.tgcenter.unified.antiaddiction.api.AntiAddiction;
+import com.tgcenter.unified.antiaddiction.api.event.EventManager;
+import com.tgcenter.unified.antiaddiction.api.event.RealNameEvent;
 import com.tgcenter.unified.antiaddiction.api.realname.RealNameCallback;
 import com.tgcenter.unified.antiaddiction.api.user.User;
 
@@ -32,6 +34,9 @@ public class CustomRealNameActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_anti_addiction_customui);
         initView();
+
+        EventManager.INSTANCE.callbackRealNameEvent(
+                new RealNameEvent(RealNameEvent.Source.Custom_UI, RealNameEvent.Action.Show));
     }
 
     private void toast(String msg) {
@@ -89,6 +94,15 @@ public class CustomRealNameActivity extends AppCompatActivity {
     private void hideProgressDialog() {
         if (mProgressDialog.isShowing()) {
             mProgressDialog.dismiss();
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (isFinishing()) {
+            EventManager.INSTANCE.callbackRealNameEvent(
+                    new RealNameEvent(RealNameEvent.Source.Custom_UI, RealNameEvent.Action.Close));
         }
     }
 }

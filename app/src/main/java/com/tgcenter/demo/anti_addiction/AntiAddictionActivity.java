@@ -2,6 +2,7 @@ package com.tgcenter.demo.anti_addiction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -12,6 +13,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.tgcenter.demo.R;
 import com.tgcenter.demo.util.ToastUtil;
 import com.tgcenter.unified.antiaddiction.api.AntiAddiction;
+import com.tgcenter.unified.antiaddiction.api.event.EventCallback;
+import com.tgcenter.unified.antiaddiction.api.event.EventManager;
+import com.tgcenter.unified.antiaddiction.api.event.RealNameEvent;
+import com.tgcenter.unified.antiaddiction.api.event.TimeLimitEvent;
 import com.tgcenter.unified.antiaddiction.api.realname.RealNameCallback;
 import com.tgcenter.unified.antiaddiction.api.timelimit.TimeLimit;
 import com.tgcenter.unified.antiaddiction.api.timelimit.TimeLimitCallback;
@@ -37,6 +42,8 @@ public class AntiAddictionActivity extends AppCompatActivity {
 
         // 设置事件限制
         customTimeLimit();
+        // 注册事件回调
+        listenEvent();
     }
 
     private void toast(String msg) {
@@ -93,6 +100,53 @@ public class AntiAddictionActivity extends AppCompatActivity {
                 if (!CustomTimeLimitActivity.sIsShown) {
                     CustomTimeLimitActivity.start(AntiAddictionActivity.this, timeLimit);
                 }
+            }
+        });
+    }
+
+    // 注册事件回调
+    private void listenEvent() {
+        EventManager.INSTANCE.registerCallback(new EventCallback() {
+            // 实名认证事件回调
+            @Override
+            public void onRealName(RealNameEvent realNameEvent) {
+                Log.d(TAG, "EventManager onRealName: " + realNameEvent);
+
+                /*
+                 * 实名认证的来源，参考 RealNameEvent.Source
+                 * RealNameEvent.Source.SDK_UI：使用 SDK 的默认 UI
+                 * RealNameEvent.Source.Custom_UI：使用 App 自定义 UI
+                 * RealNameEvent.Source.TimeLimit：从时间限制弹窗进入实名认证 UI
+                 */
+                int source = realNameEvent.getSource();
+                /*
+                 * 用户行为，参考 RealNameEvent.Action
+                 * RealNameEvent.Action.Show：展示实名认证弹窗
+                 * RealNameEvent.Action.Close：关闭实名认证弹窗
+                 * RealNameEvent.Action.Submit：提交实名认证
+                 */
+                int action = realNameEvent.getAction();
+
+                // action 为 RealNameEvent.Action.Submit 时，可以获得实名认证的结果
+                RealNameResult result = realNameEvent.getResult();
+            }
+
+            // 时间限制事件回调
+            @Override
+            public void onTimeLimit(TimeLimitEvent timeLimitEvent) {
+                Log.d(TAG, "EventManager onTimeLimit: " + timeLimitEvent);
+
+                /*
+                 * 用户行为，参考 TimeLimitEvent.Action
+                 * TimeLimitEvent.Action.Show：展示时间限制弹窗
+                 * TimeLimitEvent.Action.OpenRealName：进行实名认证
+                 * TimeLimitEvent.Action.CloseDialog：关闭时间限制弹窗（游戏时间未达到限制）
+                 * TimeLimitEvent.Action.ExitApp：退出 App（游戏时间已达到限制）
+                 */
+                int action = timeLimitEvent.getAction();
+
+                // 产生时间限制事件时，具体的时间限制原因
+                TimeLimit timeLimit = timeLimitEvent.getTimeLimit();
             }
         });
     }

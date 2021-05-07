@@ -16,6 +16,9 @@ import com.taurusx.ads.core.api.utils.ScreenUtil;
 import com.tgcenter.demo.R;
 import com.tgcenter.demo.util.ToastUtil;
 import com.tgcenter.unified.antiaddiction.api.AntiAddiction;
+import com.tgcenter.unified.antiaddiction.api.event.EventManager;
+import com.tgcenter.unified.antiaddiction.api.event.RealNameEvent;
+import com.tgcenter.unified.antiaddiction.api.event.TimeLimitEvent;
 import com.tgcenter.unified.antiaddiction.api.realname.RealNameCallback;
 import com.tgcenter.unified.antiaddiction.api.timelimit.TimeLimit;
 import com.tgcenter.unified.antiaddiction.api.user.RealNameResult;
@@ -63,6 +66,9 @@ public class CustomTimeLimitActivity extends Activity {
         getWindow().setAttributes(params);
 
         setFinishOnTouchOutside(false);
+
+        EventManager.INSTANCE.callbackTimeLimitEvent(
+                new TimeLimitEvent(TimeLimitEvent.Action.Show, mTimeLimit));
     }
 
     private void initData() {
@@ -86,10 +92,18 @@ public class CustomTimeLimitActivity extends Activity {
                 LogUtil.d(TAG, "clickAction: " + mActionButton.getText().toString());
                 if (mTimeLimit.getTimeToLimit() == 0) {
                     LogUtil.d(TAG, "TimeToLimit is 0, move app to background");
+
+                    EventManager.INSTANCE.callbackTimeLimitEvent(
+                            new TimeLimitEvent(TimeLimitEvent.Action.ExitApp, mTimeLimit));
+
                     // 将 app 退到后台
                     moveTaskToBack(true);
                 } else {
                     LogUtil.d(TAG, "TimeToLimit > 0, finish this Activity");
+
+                    EventManager.INSTANCE.callbackTimeLimitEvent(
+                            new TimeLimitEvent(TimeLimitEvent.Action.CloseDialog, mTimeLimit));
+
                     // 没有达到限制，直接退出此页面
                     finish();
                 }
@@ -103,24 +117,30 @@ public class CustomTimeLimitActivity extends Activity {
                 @Override
                 public void onClick(View v) {
                     LogUtil.d(TAG, "click realName button");
-                    // 可以调用 SDK 默认的实名认证页面，可以使用 CustomRealNameActivity
-                    AntiAddiction.getInstance().realName(new RealNameCallback() {
-                        @Override
-                        public void onFinish(User user) {
-                            LogUtil.d(TAG, "realName finish: " + user);
-                            RealNameResult result = user.getRealNameResult();
-                            if (result.isProcessing()) {
-                                LogUtil.d(TAG, "realName  isProcessing, stay this Activity");
-                                ToastUtil.toastLong(CustomTimeLimitActivity.this, com.tgcenter.unified.antiaddiction.R.string.timelimit_realname_process);
-                            } else if (result.isSuccess()) {
-                                LogUtil.d(TAG, "realName success, finish this Activity");
-                                finish();
-                            } else {
-                                LogUtil.d(TAG, "realName fail, stay this Activity");
-                                // 认证失败、初始状态时，继续展示此页面
-                            }
-                        }
-                    });
+
+                    EventManager.INSTANCE.callbackTimeLimitEvent(
+                            new TimeLimitEvent(TimeLimitEvent.Action.OpenRealName, mTimeLimit));
+
+                    // 可以调用 SDK 默认的实名认证页面，也可以使用 CustomRealNameActivity
+                    AntiAddiction.getInstance().realName(
+                            RealNameEvent.Source.TimeLimit,
+                            new RealNameCallback() {
+                                @Override
+                                public void onFinish(User user) {
+                                    LogUtil.d(TAG, "realName finish: " + user);
+                                    RealNameResult result = user.getRealNameResult();
+                                    if (result.isProcessing()) {
+                                        LogUtil.d(TAG, "realName  isProcessing, stay this Activity");
+                                        ToastUtil.toastLong(CustomTimeLimitActivity.this, com.tgcenter.unified.antiaddiction.R.string.timelimit_realname_process);
+                                    } else if (result.isSuccess()) {
+                                        LogUtil.d(TAG, "realName success, finish this Activity");
+                                        finish();
+                                    } else {
+                                        LogUtil.d(TAG, "realName fail, stay this Activity");
+                                        // 认证失败、初始状态时，继续展示此页面
+                                    }
+                                }
+                            });
                 }
             });
             mRealNameButton.setVisibility(View.VISIBLE);
