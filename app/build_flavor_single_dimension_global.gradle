@@ -90,6 +90,7 @@ android {
 
         // 配置 config 和 dependencies
         customAll {
+            dimension "custom"
             tgCenter {
                 config {
                     appId "appId_custom"
