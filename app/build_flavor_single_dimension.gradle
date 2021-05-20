@@ -47,6 +47,9 @@ android {
                     umeng true
                     appsFlyer true
                     rangersAppLog_Lite_cn true
+                    gameAntiAddiction true
+                    weChat true
+                    udesk true
                     taurusXAds true
                     taurusXAdsNetwork = [
                             toutiao: true
@@ -67,6 +70,9 @@ android {
                     umeng true
                     appsFlyer true
                     rangersAppLog_Lite_cn true
+                    gameAntiAddiction true
+                    weChat true
+                    udesk true
                     taurusXAds true
                     taurusXAdsNetwork = [
                             toutiao : true,
@@ -77,7 +83,7 @@ android {
             }
         }
 
-        // 不接入（无全屏配置，不需要设置）
+        // 不接入（无全局配置，不需要设置）
         noTGCenter {
         }
     }

@@ -19,6 +19,9 @@ tgCenter {
         umeng true
         appsFlyer true
         rangersAppLog_Lite_cn true
+        gameAntiAddiction true
+        weChat true
+        udesk true
         taurusXAds true
         taurusXAdsNetwork = [
                 toutiao: true
@@ -80,6 +83,10 @@ android {
                     embed true
                     umeng true
                     appsFlyer true
+                    rangersAppLog_Lite_cn true
+                    gameAntiAddiction true
+                    weChat true
+                    udesk true
                     taurusXAds true
                     taurusXAdsNetwork = [
                             ylh: true,
@@ -101,6 +108,10 @@ android {
                     embed true
                     umeng true
                     appsFlyer true
+                    rangersAppLog_Lite_cn true
+                    gameAntiAddiction true
+                    weChat true
+                    udesk true
                     taurusXAds true
                     taurusXAdsNetwork = [
                             kuaishou: true
@@ -109,7 +120,7 @@ android {
             }
         }
 
-        // 不接入（需要设置 null 覆盖全屏配置）
+        // 不接入（需要设置 null 覆盖全局配置）
         noTGCenter {
             dimension "custom"
             tgCenter {

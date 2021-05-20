@@ -66,6 +66,9 @@ android {
                     umeng true
                     appsFlyer true
                     rangersAppLog_Lite_cn true
+                    gameAntiAddiction true
+                    weChat true
+                    udesk true
                     taurusXAds true
                     taurusXAdsNetwork = [
                             toutiao: true
@@ -98,6 +101,10 @@ android {
                     embed true
                     umeng true
                     appsFlyer true
+                    rangersAppLog_Lite_cn true
+                    gameAntiAddiction true
+                    weChat true
+                    udesk true
                     taurusXAds true
                     taurusXAdsNetwork = [
                             kuaishou: true

@@ -21,6 +21,9 @@ tgCenter {
         umeng true
         appsFlyer true
         rangersAppLog_Lite_cn true
+        gameAntiAddiction true
+        weChat true
+        udesk true
         taurusXAds true
         taurusXAdsNetwork = [
                 ylh: true
@@ -72,7 +75,7 @@ android {
     // nullTGCenterFree：使用 nullTGCenter 中的配置（null 表示不接入）
 
     // noTGCenterPaid：使用全局 config，使用 paid 中的 dependencies
-    // noTGCenterFree：无配置（使用全屏配置）
+    // noTGCenterFree：无配置（使用全局配置）
     productFlavors {
         toutiao_inner {
             dimension "channel"
@@ -108,6 +111,10 @@ android {
                     embed true
                     umeng true
                     appsFlyer true
+                    rangersAppLog_Lite_cn true
+                    gameAntiAddiction true
+                    weChat true
+                    udesk true
                     taurusXAds true
                     taurusXAdsNetwork = [
                             kuaishou: true
