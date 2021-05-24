@@ -59,11 +59,7 @@ public class AntiAddictionActivity extends AppCompatActivity {
             public void onClick(View v) {
                 User user = AntiAddiction.getInstance().getUser();
                 if (user.isTourist()) {
-                    if (user.getRealNameResult().isProcessing()) {
-                        toast("RealName is processing, please wait...");
-                    } else {
-                        realName();
-                    }
+                    realName();
                 } else {
                     toast("RealName Success");
                 }
