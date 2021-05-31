@@ -87,6 +87,4 @@ lint/tmp/
 
 *.keystore
 
-/Upload-Plugin
-/Upload-Sdk
-/Upload-Library
+/Upload-*
