@@ -5,18 +5,22 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.taurusx.ads.core.api.utils.LogUtil;
 import com.tgcenter.demo.R;
 import com.tgcenter.demo.util.ToastUtil;
 import com.tgcenter.unified.antiaddiction.api.AntiAddiction;
+import com.tgcenter.unified.antiaddiction.api.agetip.AgeTipsListener;
 import com.tgcenter.unified.antiaddiction.api.event.EventCallback;
 import com.tgcenter.unified.antiaddiction.api.event.EventManager;
 import com.tgcenter.unified.antiaddiction.api.event.RealNameEvent;
 import com.tgcenter.unified.antiaddiction.api.event.TimeLimitEvent;
+import com.tgcenter.unified.antiaddiction.api.healthgametip.HealthGameTipsListener;
 import com.tgcenter.unified.antiaddiction.api.realname.RealNameCallback;
 import com.tgcenter.unified.antiaddiction.api.timelimit.TimeLimit;
 import com.tgcenter.unified.antiaddiction.api.timelimit.TimeLimitCallback;
@@ -32,6 +36,10 @@ public class AntiAddictionActivity extends AppCompatActivity {
     private Button mRealNameButton;
     private Button mRealNameCustomUIButton;
     private Button mUpdateUserButton;
+
+    private FrameLayout mAgeTipsContainer;
+    private Button mAgeTipsBtn;
+    private Button mHealthGameBtn;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -80,6 +88,67 @@ public class AntiAddictionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 updateUserInfo(AntiAddiction.getInstance().getUser());
+            }
+        });
+
+        mAgeTipsContainer = findViewById(R.id.age_tips_container);
+
+        mAgeTipsBtn = findViewById(R.id.btn_age_tips);
+        mAgeTipsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AntiAddiction.getInstance().showAgeTipsIcon(mAgeTipsContainer, new AgeTipsListener() {
+                    @Override
+                    public void onIconShowSuccess() {
+                        Log.d(TAG, "onIconShowSuccess");
+                        mAgeTipsContainer.setVisibility(View.VISIBLE);
+                    }
+
+                    @Override
+                    public void onIconShowFail(String s) {
+                        Log.d(TAG, "onIconShowFail, error message is : " + s);
+                    }
+
+                    @Override
+                    public void onIconClick() {
+                        Log.d(TAG, "onIconClick");
+                    }
+
+                    @Override
+                    public void onAgeTipsOpen() {
+                        Log.d(TAG, "onAgeTipsOpen");
+                    }
+
+                    @Override
+                    public void onAgeTipsClose() {
+                        Log.d(TAG, "onAgeTipsClose");
+                        mAgeTipsContainer.setVisibility(View.GONE);
+                    }
+                });
+            }
+        });
+
+        mHealthGameBtn = findViewById(R.id.btn_health_game);
+        mHealthGameBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LogUtil.d(TAG, AntiAddiction.getInstance().getGameComplianceInfo().getAgeTips());
+                AntiAddiction.getInstance().showHealthGamePage(new HealthGameTipsListener() {
+                    @Override
+                    public void onHealthGameTipsOpen() {
+                        Log.d(TAG, "onHealthGameTipsOpen");
+                    }
+
+                    @Override
+                    public void onHealthGameTipsOpenFail(String s) {
+                        Log.d(TAG, "onHealthGameTipsOpenFail, error message is : " + s);
+                    }
+
+                    @Override
+                    public void onHealthGameTipsClose() {
+                        Log.d(TAG, "onHealthGameTipsClose");
+                    }
+                });
             }
         });
     }

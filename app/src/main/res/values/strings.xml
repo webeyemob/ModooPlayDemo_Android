@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">ModooPlay Demo</string>
 
+    <string name="age_tips">适龄提示</string>
+    <string name="health_game">健康游戏</string>
     <string name="debug_page">调试页面</string>
     <string name="wechat">微信登录</string>
     <string name="ad_test">广告测试</string>

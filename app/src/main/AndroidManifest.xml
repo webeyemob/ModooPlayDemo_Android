@@ -62,8 +62,7 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".anti_addiction.AntiAddictionActivity"
-            android:screenOrientation="portrait" />
+            android:name=".anti_addiction.AntiAddictionActivity" />
 
         <activity
             android:name=".anti_addiction.CustomRealNameActivity"
