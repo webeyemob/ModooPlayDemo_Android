@@ -7,6 +7,9 @@ tgCenter {
     config {
         // 从 ModooPlay 平台获取 appId
         appId "4b4b6832-4267-42db-9c04-d517d5288bbb"
+
+        // 适龄提示
+//        appId "97ed11f7-01f8-493c-ba1a-03b91056ac1a"
     }
 
     dependencies {

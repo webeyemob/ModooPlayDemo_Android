@@ -69,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
             // 或者：展示 App 根据产品风格自定义的对话框
             // showCustomPolicyDialog();
         }
+        // 测试时防止一直弹出防沉迷验证
+//        AntiAddiction.getInstance().setAutoShowTimeLimitPage(false);
     }
 
     // 请求权限
