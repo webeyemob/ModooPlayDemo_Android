@@ -26,6 +26,7 @@ import com.tgcenter.unified.antiaddiction.api.timelimit.TimeLimit;
 import com.tgcenter.unified.antiaddiction.api.timelimit.TimeLimitCallback;
 import com.tgcenter.unified.antiaddiction.api.user.RealNameResult;
 import com.tgcenter.unified.antiaddiction.api.user.User;
+import com.tgcenter.unified.antiaddiction.internal.manger.gamecompliance.GameComplianceInfo;
 
 public class AntiAddictionActivity extends AppCompatActivity {
 
@@ -132,7 +133,10 @@ public class AntiAddictionActivity extends AppCompatActivity {
         mHealthGameBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LogUtil.d(TAG, AntiAddiction.getInstance().getGameComplianceInfo().getAgeTips());
+                GameComplianceInfo info = AntiAddiction.getInstance().getGameComplianceInfo();
+                if (info != null) {
+                    LogUtil.d(TAG, info.getAgeTips());
+                }
                 AntiAddiction.getInstance().showHealthGamePage(new HealthGameTipsListener() {
                     @Override
                     public void onHealthGameTipsOpen() {
