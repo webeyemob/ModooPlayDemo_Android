@@ -272,5 +272,6 @@ public class MainActivity extends AppCompatActivity {
     private void logout() {
         TGCenter.clearCache(MainActivity.this);
         AntiAddiction.getInstance().logout();
+        System.exit(0);
     }
 }
