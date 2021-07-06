@@ -8,12 +8,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
 import com.nefarian.privacy.policy.IPrivacyPolicyCallback;
 import com.nefarian.privacy.policy.PrivacyPolicyHelper;
+import com.nefarian.privacy.policy.permissioncheck.PermissionHelper;
+import com.nefarian.privacy.policy.permissioncheck.PermissionResultListener;
 import com.tgcenter.demo.ads.NetworkAdActivity;
 import com.tgcenter.demo.anti_addiction.AntiAddictionActivity;
 import com.tgcenter.demo.richox.RichOXMainActivity;
@@ -25,6 +25,8 @@ import com.tgcenter.unified.sdk.h.UdeskHelper;
 import com.tgcenter.unified.sdk.h.WeChatHelper;
 import com.we.modoo.callback.LoginCallback;
 import com.we.modoo.core.LoginType;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -48,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.READ_PHONE_STATE
     };
-    private static final int PERMISSION_REQUEST_CODE = 0x1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +57,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initView();
+        PermissionResultListener listener = new PermissionResultListener() {
+            @Override
+            public void onRequestPermissionsResult(boolean isAllGranted, List<String> deniedPermissions) {
+                // 请求权限结束，不论用户是否同意使用权限，都要初始化
+                initModooPlay();
+            }
+        };
+        PermissionHelper.init(MainActivity.this, listener);
 
         // 初始化的流程：显示用户协议和隐私政策 -> 请求权限 -> 初始化
         // 检查用户是否同意了《用户协议和隐私政策》，如果同意则直接请求权限，否则需要弹窗征得用户同意
@@ -78,21 +87,10 @@ public class MainActivity extends AppCompatActivity {
         if (!PermissionUtil.checkSelfPermissions(this, PERMISSIONS)) {
             Log.d(TAG, "requestPermissions");
             // 未获得相关权限，请求权限
-            ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_REQUEST_CODE);
+            PermissionHelper.showDefaultPermissionDialog();
         } else {
             Log.d(TAG, "has Permissions");
             // 已获取相关权限，初始化
-            initModooPlay();
-        }
-    }
-
-    // 请求权限结束的回调
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == PERMISSION_REQUEST_CODE) {
-            Log.d(TAG, "onRequestPermissionsResult");
-            // 请求权限结束，不论用户是否同意使用权限，都要初始化
             initModooPlay();
         }
     }
