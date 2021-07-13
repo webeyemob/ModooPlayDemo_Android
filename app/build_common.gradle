@@ -7,9 +7,6 @@ tgCenter {
     config {
         // 从 ModooPlay 平台获取 appId
         appId "4b4b6832-4267-42db-9c04-d517d5288bbb"
-
-        // 适龄提示
-//        appId "97ed11f7-01f8-493c-ba1a-03b91056ac1a"
     }
 
     dependencies {
@@ -35,7 +32,6 @@ tgCenter {
         taurusXAds true
         // 不同的渠道需要集成的 Network 不一样，请务必正确配置
         taurusXAdsNetwork = [
-                baidu:true,
                 mobrain          : true, // 穿山甲聚合
                 mobrain_toutiao  : true, // 穿山甲聚合-穿山甲
                 mobrain_ylh      : true, // 穿山甲聚合-优量汇
@@ -122,8 +118,6 @@ dependencies {
     // sect
     implementation('com.richox.sect:richox_sect:1.0.6')
 
-
-    // for test
     implementation 'com.github.bumptech.glide:glide:4.9.0'
 //    implementation 'com.tgcenter.unified:privacy:1.1.7'
 
