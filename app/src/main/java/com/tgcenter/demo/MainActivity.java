@@ -104,7 +104,9 @@ public class MainActivity extends AppCompatActivity {
     private void initModooPlay() {
         TGCenter.init(MainActivity.this,
                 InitConfig.newBuilder()
+                        // 在测试阶段，应用可以开启调试日志，来查看各组件是否正确运行
                         .setDebugMode(BuildConfig.DEBUG)
+                        // 渠道：可选，用于传入 Umeng、RangersAppLog SDK
                         .setChannel(Channel)
                         .build());
     }
