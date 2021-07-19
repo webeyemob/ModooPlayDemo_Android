@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 // ModooPlay
+apply plugin: 'com.loveota.lbsdk'
 apply plugin: 'com.tgcenter.unified'
+apply from: 'lebian_cust.gradle'
 
 // 仅全局配置
 tgCenter {
@@ -27,6 +29,9 @@ tgCenter {
 
         // 客服系统
         udesk true
+
+        // LB热更新
+        lebian true
 
         // 广告
         taurusXAds true
@@ -66,6 +71,15 @@ android {
             // 按照产品需求配置
             abiFilters 'armeabi-v7a'
         }
+
+        manifestPlaceholders = [
+                "MainChId": lebian.meta_MainChId,
+                "ClientChId": lebian.meta_ClientChId,
+                "LEBIAN_SECID": lebian.meta_LEBIAN_SECID,
+                "LEBIAN_APPLICATION": 'com.excelliance.open.LBApplication',
+                "screenOrientation": lebian.screenOrientation,
+                "lb_target_pkgname": (lebian.packageName ? lebian.packageName :'${applicationId}')
+        ]
     }
 
     // 按照产品需求配置

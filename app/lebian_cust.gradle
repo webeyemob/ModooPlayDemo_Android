@@ -1,0 +1,16 @@
+project.extensions.create('lebian', LBCustExtension)
+lebian {
+    meta_MainChId = '69108'
+    meta_ClientChId = 'TGCenter'
+    meta_LEBIAN_SECID = 'kd58gh86.c'
+    screenOrientation = 'landscape'
+//    packageName = '设置为您的主入口activity的android: taskAffinity，如果没有则不要设置。'
+}
+
+class LBCustExtension {
+    String meta_MainChId
+    String meta_ClientChId
+    String meta_LEBIAN_SECID
+    String screenOrientation
+    String packageName
+}

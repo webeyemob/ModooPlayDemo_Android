@@ -4,6 +4,7 @@ buildscript {
         // 用于 ModooPlay 内部测试使用
         maven { url "./Upload-Plugin" }
         maven { url "./Upload-Library" }
+        maven { url 'https://loveota-maven.pkg.coding.net/repository/bintray/lebianplugin/'}
 
         google()
         jcenter()
@@ -15,7 +16,8 @@ buildscript {
         classpath "com.android.tools.build:gradle:4.0.2"
 
         // ModooPlay
-        classpath "com.tgcenter.unified:plugin:1.6"
+        classpath "com.tgcenter.unified:plugin:1.7"
+        classpath 'com.loveota.plugins:lbplugin:0.1.7'
     }
 }
 
