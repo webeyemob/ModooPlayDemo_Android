@@ -4,6 +4,19 @@ apply plugin: 'com.loveota.lbsdk'
 apply plugin: 'com.tgcenter.unified'
 apply from: 'lebian_cust.gradle'
 
+apply plugin: 'com.mob.sdk'
+MobSDK {
+    // 请填入运营提供的正式参数，这里的参数仅供参考。
+    appKey "32231df0dd438" //您在开发这后台注册的appKey
+    appSecret "b227e86b064f6b70e4d8aa3b57648a91"//您在开发这后台注册的appSecret
+    spEdition "fp"
+    MobLink {
+        version = "3.4.3.1"
+        uriScheme "ssdk32231df0dd438://cn.sharesdk.loop" //您后台配置的scheme
+        appLinkHost "bqfa.t4m.cn"//您后台开启AppLink时生成的Host
+    }
+}
+
 // 仅全局配置
 tgCenter {
     config {
@@ -50,6 +63,20 @@ tgCenter {
                 oppo             : false, // OPPO
                 vivo             : false, // vivo
                 xiaomi           : false  // 小米
+        ]
+
+        // richOX 模块相关依赖
+        richOX = [
+                base                      : true,
+                base_oversea              : true,
+                interactive_scene         : true,
+                fission_moblink           : true,
+                fission_moblink_oversea   : true,
+                fission_firebase          : true,
+                sect                      : true,
+                strategy_normal           : true,
+                strategy_stage            : true,
+                toolbox                   : true
         ]
     }
 }
@@ -129,25 +156,25 @@ dependencies {
     implementation 'androidx.multidex:multidex:2.0.1'
 
     // base
-    implementation('com.richox.base:richox_base:1.0.8')
+//    implementation('com.richox.base:richox_base:1.0.8')
     // h5
-    implementation('com.richox.sdk:richox_h5:2.0.8')
-    implementation 'com.airbnb.android:lottie:2.7.0'
-    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.15'
+//    implementation('com.richox.sdk:richox_h5:2.0.8')
+//    implementation 'com.airbnb.android:lottie:2.7.0'
+//    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.15'
     // share
-    implementation 'com.google.zxing:core:3.3.0'
-    implementation 'com.fission.sdk:openinstall:2.5.1'
-    implementation('com.richox.share:richox_fission_openinstall:1.0.5')
+//    implementation 'com.google.zxing:core:3.3.0'
+//    implementation 'com.fission.sdk:openinstall:2.5.1'
+//    implementation('com.richox.share:richox_fission_openinstall:1.0.5')
     // strategy fission
-    implementation('com.richox.strategy:richox_strategy_fission:1.0.4')
+//    implementation('com.richox.strategy:richox_strategy_fission:1.0.4')
 
-    implementation 'com.richox.strategy.base:richox_strategy_base:1.0.6'
+//    implementation 'com.richox.strategy.base:richox_strategy_base:1.0.6'
     // normal strategy
-    implementation('com.richox.strategy.normal:richox_normal_strategy:1.0.8')
+//    implementation('com.richox.strategy.normal:richox_normal_strategy:1.0.8')
     // stage strategy
-    implementation('com.richox.strategy.stage:richox_stage_strategy:1.0.5')
+//    implementation('com.richox.strategy.stage:richox_stage_strategy:1.0.5')
     // sect
-    implementation('com.richox.sect:richox_sect:1.0.6')
+//    implementation('com.richox.sect:richox_sect:1.0.6')
 
     implementation 'com.github.bumptech.glide:glide:4.9.0'
 //    implementation 'com.tgcenter.unified:privacy:1.1.7'
