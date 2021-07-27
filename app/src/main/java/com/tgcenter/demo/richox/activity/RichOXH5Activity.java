@@ -18,6 +18,7 @@ import com.we.modoo.ModooHelper;
 import com.we.modoo.callback.LoginCallback;
 import com.we.modoo.core.LoginType;
 
+
 public class RichOXH5Activity extends BaseActivity implements View.OnClickListener {
 
     private String mUserId;
@@ -28,6 +29,7 @@ public class RichOXH5Activity extends BaseActivity implements View.OnClickListen
     private TextView mDialogView;
     private TextView mEnterView;
     private TextView mNativeView;
+    private TextView mShareH5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,8 @@ public class RichOXH5Activity extends BaseActivity implements View.OnClickListen
 
     private void initRox() {
         RichOXH5.init(getApplicationContext());
+        // RichOXH5.setLanguage("en");
+        // RichOXH5.setCountryCode("JP");
 
         RichOXH5.registerWeChatCallback(new WeChatRegisterCallback() {
             @Override
@@ -87,6 +91,8 @@ public class RichOXH5Activity extends BaseActivity implements View.OnClickListen
         mEnterView.setOnClickListener(this);
         mNativeView = findViewById(R.id.richox_demo_entry);
         mNativeView.setOnClickListener(this);
+        mShareH5 = findViewById(R.id.richox_demo_h5_share);
+        mShareH5.setOnClickListener(this);
     }
 
 
@@ -105,6 +111,9 @@ public class RichOXH5Activity extends BaseActivity implements View.OnClickListen
                 break;
             case R.id.richox_demo_entry:
                 intent.setClass(RichOXH5Activity.this, RichOXH5EntryActivity.class);
+                break;
+            case R.id.richox_demo_h5_share:
+                intent.setClass(RichOXH5Activity.this, RichOXH5ShareActivity.class);
                 break;
             default:
                 break;

@@ -32,23 +32,25 @@ public class RichOXSectActivity extends BaseActivity {
     private static final String TAG = Constants.TAG;
 
     private final String TONG_ID = "0532f4e1c5bd385d";
-    private final String APPRENTICE_ID = "6c8105a93029fc70";
+    private final String APPRENTICE_ID = "c3b609ab75675697";
     private ArrayList<ApprenticeInfo> mStudentList;
     private final String TONG_MISSION_ID = "";
     // data
-    private static TextView mGetTongInfo;
-    private static TextView mGetStudents;
-    private static TextView mGetStudentDetail;
-    private static TextView mGenStar;
-    private static TextView mGetStar;
-    private static TextView mGetStarAll;
-    private static TextView mGetInviteReward;
-    private static TextView mGetInviteListConfig;
-    private static TextView mBindInviter;
-    private static TextView mGetStarDayRecord;
-    private static TextView mGetRedPacketRecord;
-    private static TextView mTransform;
+    private TextView mGetTongInfo;
+    private TextView mUserStatus;
+    private TextView mGetStudents;
+    private TextView mGetStudentDetail;
+    private TextView mGenStar;
+    private TextView mGetStar;
+    private TextView mGetStarAll;
+    private TextView mGetInviteReward;
+    private TextView mGetInviteListConfig;
+    private TextView mBindInviter;
+    private TextView mGetStarDayRecord;
+    private TextView mGetRedPacketRecord;
+    private TextView mTransform;
 
+    private TextView mSectSettings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,6 +102,24 @@ public class RichOXSectActivity extends BaseActivity {
             }
         });
 
+        mUserStatus = findViewById(R.id.richox_demo_sect_get_user_status);
+        mUserStatus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RichOXSect.getUserSectStatus(new CommonCallback<Integer>() {
+                    @Override
+                    public void onSuccess(Integer integer) {
+                        Log.d(TAG, "the user status : " + integer);
+                    }
+
+                    @Override
+                    public void onFailed(int code, String msg) {
+
+                    }
+                });
+            }
+        });
+
         mGetStudents = findViewById(R.id.richox_demo_sect_get_students);
         mGetStudents.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,7 +147,7 @@ public class RichOXSectActivity extends BaseActivity {
         mGetStudentDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RichOXSect.getApprenticeInfo(APPRENTICE_ID, new CommonCallback<ApprenticeInfo>() {
+                RichOXSect.getApprenticeInfo("623b50f805ca6eed", new CommonCallback<ApprenticeInfo>() {
                     @Override
                     public void onSuccess(ApprenticeInfo student) {
                         if (student != null) {
@@ -182,7 +202,7 @@ public class RichOXSectActivity extends BaseActivity {
         mGetStar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RichOXSect.getContribution("", new CommonCallback<Contribution>() {
+                RichOXSect.getContribution(APPRENTICE_ID, new CommonCallback<Contribution>() {
                     @Override
                     public void onSuccess(Contribution contribution) {
                         if (contribution != null) {
@@ -307,7 +327,7 @@ public class RichOXSectActivity extends BaseActivity {
         mGetStarDayRecord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RichOXSect.getContributionRecordByDay(2021, 1, new CommonCallback<Map<String, ContributionRecord>>() {
+                RichOXSect.getContributionRecordByDay(2021, 2, new CommonCallback<Map<String, ContributionRecord>>() {
                     @Override
                     public void onSuccess(Map<String, ContributionRecord> recordsMap) {
                         Log.d(TAG, "the list is :");
@@ -382,5 +402,50 @@ public class RichOXSectActivity extends BaseActivity {
             }
         });
 
+        mSectSettings = findViewById(R.id.richox_demo_sect_get_settings);
+        mSectSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RichOXSect.getSettings(new CommonCallback<SectSettings>() {
+                    @Override
+                    public void onSuccess(SectSettings sectSettings) {
+                        if (sectSettings != null) {
+                            Log.d(TAG, sectSettings.toString());
+                            List<SectSettings.InviteAward> list = sectSettings.getAwardSettingsList();
+                            Log.d(TAG, "邀请人数奖励信息如下: ");
+                            for (SectSettings.InviteAward inviteAward : list) {
+                                Log.d(TAG, inviteAward.toString());
+                            }
+                            HashMap<Integer, Integer> transformStep = sectSettings.getTransformStep();
+                            Set<Integer> keys = transformStep.keySet();
+                            for (Integer key : keys) {
+                                Log.d(TAG, "档位: " + key + " 需要消耗贡献值: " + transformStep.get(key));
+                            }
+                            HashMap<Integer, double[]> timeMaps = sectSettings.getTransformTimesMap();
+                            Set<Integer> timesKeys = timeMaps.keySet();
+                            for (Integer timeKey : timesKeys) {
+                                Log.d(TAG, "兑换次数: " + timeKey);
+                                Log.d(TAG, "对应的红包奖励值:");
+                                double[] redBagList = timeMaps.get(timeKey);
+
+                                for (int j = 0; j < redBagList.length; j++) {
+                                    Log.d(TAG, "宗门等级：" + (j + 1) + " 奖励：" + redBagList[j]);
+                                }
+                            }
+                            int[] grades = sectSettings.getGrades();
+                            for (int j = 0; j < grades.length; j++) {
+                                Log.d(TAG, "宗门等级： " + (j + 1) + " 需要邀请人数： " + grades[j]);
+                            }
+                        }
+
+                    }
+
+                    @Override
+                    public void onFailed(int code, String msg) {
+                        Log.d(TAG, "code is " + code + " msg: " + msg);
+                    }
+                });
+            }
+        });
     }
 }

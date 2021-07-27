@@ -27,7 +27,7 @@ public class RichOXH5DialogActivity extends BaseActivity {
     }
 
     private void initView() {
-        final DialogScene scene = new DialogScene(getApplicationContext(), "50109");
+        DialogScene scene = new DialogScene(getApplicationContext(), "50109");
         scene.setSceneListener(new SceneListener() {
             @Override
             public void onLoaded() {
@@ -42,7 +42,7 @@ public class RichOXH5DialogActivity extends BaseActivity {
             }
 
             @Override
-            public void onLoadFailed(final RichOXH5Error error) {
+            public void onLoadFailed(RichOXH5Error error) {
                 Log.d(TAG, "on onLoadFailed");
                 runOnUiThread(new Runnable() {
                     @Override

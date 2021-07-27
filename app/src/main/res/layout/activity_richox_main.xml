@@ -4,52 +4,90 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/demo_activity_richox_common"
-        style="@style/mine_text_style"
-        android:text="基础功能" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/demo_activity_richox_user"
+                style="@style/mine_text_style"
+                android:text="用户模块" />
 
-    <View style="@style/divide_style" />
+            <View style="@style/divide_style" />
 
-    <TextView
-        android:id="@+id/demo_activity_richox_h5"
-        style="@style/mine_text_style"
-        android:text="H5活动" />
+            <TextView
+                android:id="@+id/demo_activity_rox_user"
+                style="@style/mine_text_style"
+                android:text="用户模块（ROX）" />
 
-    <View style="@style/divide_style" />
+            <View style="@style/divide_style" />
 
-    <TextView
-        android:id="@+id/demo_activity_richox_strategy"
-        style="@style/mine_text_style"
-        android:text="阶梯红包策略（Fission)" />
+            <TextView
+                android:id="@+id/demo_activity_richox_h5"
+                style="@style/mine_text_style"
+                android:text="H5活动" />
 
-    <View style="@style/divide_style" />
+            <View style="@style/divide_style" />
 
-    <TextView
-        android:id="@+id/demo_activity_richox_strategy2"
-        style="@style/mine_text_style"
-        android:text="阶梯红包策略" />
+            <TextView
+                android:id="@+id/demo_activity_richox_strategy2"
+                style="@style/mine_text_style"
+                android:text="阶梯策略" />
 
-    <View style="@style/divide_style" />
+            <View style="@style/divide_style" />
 
-    <TextView
-        android:id="@+id/demo_activity_richox_normal_strategy"
-        style="@style/mine_text_style"
-        android:text="通用红包策略" />
+            <TextView
+                android:id="@+id/demo_activity_richox_normal_strategy"
+                style="@style/mine_text_style"
+                android:text="通用策略" />
 
-    <View style="@style/divide_style" />
+            <View style="@style/divide_style" />
 
-    <TextView
-        android:id="@+id/demo_activity_richox_share"
-        style="@style/mine_text_style"
-        android:text="用户分享" />
+            <TextView
+                android:id="@+id/demo_activity_richox_normal_strategy_custom"
+                style="@style/mine_text_style"
+                android:text="通用策略_自定义规则" />
 
-    <View style="@style/divide_style" />
+            <View style="@style/divide_style" />
 
-    <TextView
-        android:id="@+id/demo_activity_richox_sect"
-        style="@style/mine_text_style"
-        android:text="用户裂变" />
+            <TextView
+                android:id="@+id/demo_activity_richox_share"
+                style="@style/mine_text_style"
+                android:text="裂变模块" />
+
+            <View style="@style/divide_style" />
+
+            <TextView
+                android:id="@+id/demo_activity_richox_sect"
+                style="@style/mine_text_style"
+                android:text="宗门模块" />
+
+            <View style="@style/divide_style" />
+
+            <TextView
+                android:id="@+id/demo_activity_rox_sect"
+                style="@style/mine_text_style"
+                android:text="宗门模块（ROX）" />
+
+            <View style="@style/divide_style" />
+
+            <TextView
+                android:id="@+id/demo_activity_richox_event"
+                style="@style/mine_text_style"
+                android:text="应用内打点" />
+
+            <View style="@style/divide_style" />
+
+            <TextView
+                android:id="@+id/demo_activity_richox_toolbox"
+                style="@style/mine_text_style"
+                android:text="工具箱" />
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

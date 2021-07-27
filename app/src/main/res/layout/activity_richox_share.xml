@@ -38,4 +38,25 @@
         style="@style/mine_text_style"
         android:text="还原分享参数" />
 
+    <View style="@style/divide_style" />
+
+    <TextView
+        android:id="@+id/richox_demo_share_event_begin_share"
+        style="@style/mine_text_style"
+        android:text="准备分享（打点）" />
+
+    <View style="@style/divide_style" />
+
+    <TextView
+        android:id="@+id/richox_demo_share_event_start_share"
+        style="@style/mine_text_style"
+        android:text="开始分享（打点）" />
+
+    <View style="@style/divide_style" />
+
+    <TextView
+        android:id="@+id/richox_demo_share_event_report_bind"
+        style="@style/mine_text_style"
+        android:text="绑定关系（打点）" />
+
 </LinearLayout>

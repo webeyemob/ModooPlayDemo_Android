@@ -22,11 +22,11 @@ import java.util.List;
 public class RichOXCommonWithdrawActivity extends BaseActivity {
     private static final String TAG = Constants.TAG;
 
-    private static String mRealName = "张松顺";
+    private static String mRealName = "张**";
     private static String mPhoneNumber = "13770561390";
     private static String mComment = "test";
     private static String mAddress = "nanjing jiangsu";
-    private static String mIdCard = "320911198512011934";
+    private static String mIdCard = "3209111985********";
     private static String mTaskIdWX = "zongmen_withdraw_contribution";
     private static String mTaskIdNormal = "zongmen_withdraw_invite_3";
     private static String mWithdrawChannel = "";

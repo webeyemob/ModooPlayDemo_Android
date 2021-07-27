@@ -13,6 +13,13 @@
     <View style="@style/divide_style" />
 
     <TextView
+        android:id="@+id/demo_activity_richox_common_rox_user"
+        style="@style/mine_text_style"
+        android:text="用户模块(ROX)" />
+
+    <View style="@style/divide_style" />
+
+    <TextView
         android:id="@+id/demo_activity_richox_common_task"
         style="@style/mine_text_style"
         android:text="任务模块" />
@@ -30,5 +37,7 @@
         android:id="@+id/demo_activity_richox_common_data"
         style="@style/mine_text_style"
         android:text="私有数据" />
+
+
 
 </LinearLayout>

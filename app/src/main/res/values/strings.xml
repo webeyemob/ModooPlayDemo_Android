@@ -19,4 +19,8 @@
     <string name="anti_addiction_name">姓名</string>
     <string name="anti_addiction_idNumber">身份证</string>
 
+    <string name="facebook_app_id">650229192313468</string>
+    <string name="fb_login_protocol_scheme">fb650229192313468</string>
+    <string name="server_client_id">575452748759-iaehsmv13ao44p8khpnp2mclp5uk62b2.apps.googleusercontent.com</string>
+
 </resources>

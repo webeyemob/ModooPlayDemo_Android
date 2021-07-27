@@ -12,13 +12,19 @@ import com.richox.base.InitCallback;
 import com.richox.base.RichOX;
 import com.tgcenter.demo.R;
 import com.tgcenter.demo.ads.base.BaseActivity;
+import com.tgcenter.demo.richox.activity.EventActivity;
+import com.tgcenter.demo.richox.activity.ROXSectActivity;
+import com.tgcenter.demo.richox.activity.ROXUserActivity;
 import com.tgcenter.demo.richox.activity.RichOXCommonActivity;
+import com.tgcenter.demo.richox.activity.RichOXCommonUserActivity;
 import com.tgcenter.demo.richox.activity.RichOXH5Activity;
 import com.tgcenter.demo.richox.activity.RichOXNormalStrategyActivity;
+import com.tgcenter.demo.richox.activity.RichOXNormalStrategyCustomActivity;
 import com.tgcenter.demo.richox.activity.RichOXSectActivity;
 import com.tgcenter.demo.richox.activity.RichOXShareActivity;
 import com.tgcenter.demo.richox.activity.RichOXStageStrategyActivity;
 import com.tgcenter.demo.richox.activity.RichOXStrategyFissionActivity;
+import com.tgcenter.demo.richox.activity.ToolboxActivity;
 import com.tgcenter.demo.richox.constance.Constants;
 import com.we.modoo.ModooHelper;
 
@@ -30,13 +36,17 @@ import java.util.Set;
 public class RichOXMainActivity extends BaseActivity {
     private final String TAG = "RichDemo";
 
-    private TextView mCommonActivity;
+    private TextView mUserActivity;
+    private TextView mROXUserActivity;
     private TextView mH5Activity;
-    private TextView mStrategyActivity;
     private TextView mStrategyActivity2;
     private TextView mNormalStrategyActivity;
+    private TextView mNormalCustomActivity;
     private TextView mShareActivity;
     private TextView mSectActivity;
+    private TextView mROXSectActivity;
+    private TextView mEventActivity;
+    private TextView mToolboxActivity;
 
 
     @Override
@@ -48,14 +58,24 @@ public class RichOXMainActivity extends BaseActivity {
         initRichOXCommon();
     }
 
-
     private void initView() {
-        mCommonActivity = findViewById(R.id.demo_activity_richox_common);
-        mCommonActivity.setOnClickListener(new View.OnClickListener() {
+        mUserActivity = findViewById(R.id.demo_activity_richox_user);
+        mUserActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(RichOXMainActivity.this, RichOXCommonActivity.class);
+                intent.setClass(RichOXMainActivity.this, RichOXCommonUserActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
+
+        mROXUserActivity = findViewById(R.id.demo_activity_rox_user);
+        mROXUserActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(RichOXMainActivity.this, ROXUserActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
@@ -67,17 +87,6 @@ public class RichOXMainActivity extends BaseActivity {
             public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.setClass(RichOXMainActivity.this, RichOXH5Activity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-            }
-        });
-
-        mStrategyActivity = findViewById(R.id.demo_activity_richox_strategy);
-        mStrategyActivity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(RichOXMainActivity.this, RichOXStrategyFissionActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
@@ -105,6 +114,17 @@ public class RichOXMainActivity extends BaseActivity {
             }
         });
 
+        mNormalCustomActivity = findViewById(R.id.demo_activity_richox_normal_strategy_custom);
+        mNormalCustomActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(RichOXMainActivity.this, RichOXNormalStrategyCustomActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
+
         mShareActivity = findViewById(R.id.demo_activity_richox_share);
         mShareActivity.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,6 +147,38 @@ public class RichOXMainActivity extends BaseActivity {
             }
         });
 
+        mROXSectActivity = findViewById(R.id.demo_activity_rox_sect);
+        mROXSectActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(RichOXMainActivity.this, ROXSectActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
+
+        mEventActivity = findViewById(R.id.demo_activity_richox_event);
+        mEventActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(RichOXMainActivity.this, EventActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
+
+        mToolboxActivity = findViewById(R.id.demo_activity_richox_toolbox);
+        mToolboxActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(RichOXMainActivity.this, ToolboxActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
     }
 
     private void initRichOXCommon() {

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/demo_normal_strategy_fetch_config"
+                style="@style/mine_text_style"
+                android:text="拉取配置" />
+
+            <View style="@style/divide_style" />
+
+            <TextView
+                android:id="@+id/demo_normal_strategy_load_reward"
+                style="@style/mine_text_style"
+                android:text="加载广告" />
+
+            <View style="@style/divide_style" />
+
+            <TextView
+                android:id="@+id/demo_normal_strategy_show_reward"
+                style="@style/mine_text_style"
+                android:text="展示广告" />
+
+            <View style="@style/divide_style" />
+
+            <TextView
+                android:id="@+id/demo_normal_strategy_custom_reward"
+                style="@style/mine_text_style"
+                android:text="客户端指定规则" />
+
+            <View style="@style/divide_style" />
+
+            <TextView
+                android:id="@+id/demo_normal_strategy_custom_reward2"
+                style="@style/mine_text_style"
+                android:text="服务端指定规则" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

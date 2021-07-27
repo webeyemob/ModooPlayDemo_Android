@@ -18,6 +18,7 @@ import com.tgcenter.demo.richox.util.ToastUtil;
 
 import java.util.List;
 
+
 public class RichOXStrategyFissionActivity extends BaseActivity {
     private TextView mStageId;
     private ListView mListView;

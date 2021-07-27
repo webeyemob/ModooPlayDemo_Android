@@ -42,7 +42,7 @@ public class RichOXH5NativeActivity extends BaseActivity {
         mLayoutRoot = findViewById(R.id.native_root_layout);
 
         mEnter = findViewById(R.id.native_load);
-        final NativeScene scene = new NativeScene(getApplicationContext(), "50076");
+        NativeScene scene = new NativeScene(getApplicationContext(), "50076");
         mEnter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,7 +59,7 @@ public class RichOXH5NativeActivity extends BaseActivity {
                     }
 
                     @Override
-                    public void onLoadFailed(final RichOXH5Error error) {
+                    public void onLoadFailed(RichOXH5Error error) {
                         Log.d(TAG, "on onLoadFailed");
                         runOnUiThread(new Runnable() {
                             @Override

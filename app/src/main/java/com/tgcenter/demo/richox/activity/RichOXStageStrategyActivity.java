@@ -1,8 +1,8 @@
 package com.tgcenter.demo.richox.activity;
 
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -10,25 +10,23 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.richox.base.CommonCallback;
-import com.richox.base.RichOX;
 import com.richox.strategy.base.WithdrawResult;
-import com.richox.strategy.base.bean.StrategyMissionResult;
-import com.richox.strategy.base.bean.StrategyMissionTask;
-import com.richox.strategy.base.bean.StrategyWithdrawRecord;
 import com.richox.strategy.stage.ROXStageStrategy;
+import com.richox.strategy.stage.bean.BaseType;
+import com.richox.strategy.stage.bean.StageMissionResult;
+import com.richox.strategy.stage.bean.StageMissionTask;
+import com.richox.strategy.stage.bean.StageProgressConfig;
 import com.richox.strategy.stage.bean.StageStrategyConfig;
 import com.richox.strategy.stage.bean.StageStrategyInfo;
 import com.richox.strategy.stage.bean.StageWithdrawStatus;
 import com.richox.strategy.stage.bean.StageWithdrawTask;
+import com.richox.strategy.stage.bean.TypeWithdraw;
 import com.tgcenter.demo.R;
 import com.tgcenter.demo.ads.base.BaseActivity;
 import com.tgcenter.demo.richox.constance.Constants;
+import com.tgcenter.demo.richox.util.ToastUtil;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 public class RichOXStageStrategyActivity extends BaseActivity {
     private TextView mFetchConfig;
@@ -37,16 +35,18 @@ public class RichOXStageStrategyActivity extends BaseActivity {
     private TextView mExtremeWithdraw;
     private TextView mWithdraw;
 
-    private final int STRATEGY_ID = 146;
-    private final String MISSION_ID = "watchvideo";
-    private final String EXTREME_WITHDRAW_ID = "withdraw1";
+    private final int STRATEGY_ID = 244;
+    private final String MISSION_ID = "watchvideo1";
+    private final String EXTREME_WITHDRAW_ID = "withdraw03";
     private final String WITHDRAW_ID = "withdraw3";
 
-    private LinearLayout mStrategyContent;
-    private List<View> mStageListView = new ArrayList<>();
+    private LinearLayout mWithdrawContent;
+    private LinearLayout mMissionContent;
 
-    Map<Integer, StageWithdrawTask> mStageWithdrawTaskMap = new HashMap<>();
-    Map<String, Integer> mWithdrawStatusMap = new HashMap<>();
+    private List<StageWithdrawTask> mStageWithdrawTasks;
+    private List<StageMissionTask> mTaskList;
+    private List<StageWithdrawStatus> mWithdrawStatusList;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,104 +55,157 @@ public class RichOXStageStrategyActivity extends BaseActivity {
         initView();
     }
 
-    private void addView2StageContent() {
-        if (mStrategyContent != null) {
-            mStrategyContent.removeAllViews();
+    private void addView2MissionContent() {
+        if (mMissionContent != null) {
+            mMissionContent.removeAllViews();
         }
-        Set<Integer> keys = mStageWithdrawTaskMap.keySet();
-        for (int index : keys) {
-            View childView = LayoutInflater.from(this).inflate(R.layout.layout_stage_item, null);
-            childView.setTag(index);
-            mStageListView.add(childView);
-            mStrategyContent.addView(childView);
+        for (StageMissionTask task : mTaskList) {
+            TextView textView = new TextView(RichOXStageStrategyActivity.this);
+            textView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 100));
+            textView.setGravity(Gravity.CENTER);
+            textView.setText(task.getName());
+            textView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (task.getPrizeType() == StageMissionTask.PRIZE_TYPE_FIXED_VALUE) {
+                        ROXStageStrategy.getInstance(STRATEGY_ID).doMission(task.getId(), new CommonCallback<StageMissionResult>() {
+                            @Override
+                            public void onSuccess(StageMissionResult stageMissionResult) {
+                                Log.d(Constants.TAG, stageMissionResult.toString());
+                                updateProgress();
+                            }
+
+                            @Override
+                            public void onFailed(int code, String msg) {
+                                Log.d(Constants.TAG, "the code is " + code + " the msg is : " + msg);
+                            }
+                        });
+                    } else {
+                        ROXStageStrategy.getInstance(STRATEGY_ID).doMission(task.getId(), task.getPrizeAmount(), new CommonCallback<StageMissionResult>() {
+                            @Override
+                            public void onSuccess(StageMissionResult stageMissionResult) {
+                                Log.d(Constants.TAG, stageMissionResult.toString());
+                                updateProgress();
+                            }
+
+                            @Override
+                            public void onFailed(int code, String msg) {
+
+                            }
+                        });
+                    }
+
+                }
+            });
+            mMissionContent.addView(textView);
         }
     }
 
-    private void updateStage(StageStrategyInfo info) {
-        int total = info.getCurrentProgress();
-        int left = total;
-        int size = mStageListView.size();
-        for (int i = 0; i < size; i++) {
-            int index = i + 1;
-            View view = getViewByIndex(index);
-            ProgressBar progressBar = ((ProgressBar) view.findViewById(R.id.demo_stage_progress));
-            TextView textView = (TextView) view.findViewById(R.id.demo_stage_submit);
-            textView.setOnClickListener(null);
-            StageWithdrawTask task = mStageWithdrawTaskMap.get(index);
-            if (left < task.getProcessRank()) {
-                progressBar.setProgress((left * 100 / task.getProcessRank()));
-                textView.setText("未达标");
-                break;
-            } else {
-                progressBar.setProgress(100);
-                left = left - task.getProcessRank();
-                boolean hasRecorded = mWithdrawStatusMap.containsKey(task.getId());
-                if (hasRecorded) {
-                    int status = mWithdrawStatusMap.get(task.getId());
-                    switch (status) {
-                        case WithdrawResult.STATUS_REMIT_SUCCESS:
-                            textView.setText("已提现");
-                            break;
-                        case WithdrawResult.STATUS_REVIEW_PASS:
-                        case WithdrawResult.STATUS_WAITING_REMIT:
-                        case WithdrawResult.STATUS_WAITING_REVIEW:
-                            textView.setText("审核中");
-                            break;
-                        case WithdrawResult.STATUS_REVIEW_REJECT:
-                        case WithdrawResult.STATUS_REMIT_FAILED:
-                            textView.setText("提现失败");
-                            break;
-                        case 0 :
-                            textView.setText("提现");
+    private void addView2WithdrawContent() {
+        if (mWithdrawContent != null) {
+            mWithdrawContent.removeAllViews();
+        }
+        for (StageWithdrawStatus withdrawStatus : mWithdrawStatusList) {
+            View view = LayoutInflater.from(RichOXStageStrategyActivity.this).inflate(R.layout.layout_stage_item, null);
+            TypeWithdraw typeWithdraw = withdrawStatus.getTypeList().get(0);
+            if (typeWithdraw != null) {
+                ((TextView) view.findViewById(R.id.demo_stage_name)).setText(typeWithdraw.getName());
+                int progress = (int) (typeWithdraw.getTotal() * 100 / typeWithdraw.getRange());
+                if (progress > 100) {
+                    progress = 100;
+                }
+                ((ProgressBar) view.findViewById(R.id.demo_stage_progress)).setProgress(progress);
+                TextView textView = (TextView) view.findViewById(R.id.demo_stage_submit);
+                int status = withdrawStatus.getStatus();
+                // 未提现
+                if (status == WithdrawResult.STATUS_NO_WITHDRAW) {
+                    if (progress == 100) {
+                        // 判断是否有额外条线
+                        int maxRestrict = withdrawStatus.getMaxExternalRestrict();
+                        int currentRestrict = withdrawStatus.getCurrentExternalRestrict();
+                        // 有限制条件
+                        if (maxRestrict > 0) {
+                            if (currentRestrict > maxRestrict) {
+                                textView.setText("去提现");
+                                textView.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        go2Withdraw(withdrawStatus.getTaskId());
+                                    }
+                                });
+                            } else {
+                                // 未达到限制条件
+                                textView.setText("还差" + (maxRestrict - currentRestrict) + "人");
+                            }
+                        } else {
+                            textView.setText("去提现");
                             textView.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    if (task.isExtreme()) {
-                                        ROXStageStrategy.getInstance(STRATEGY_ID).extremeWithdraw(task.getId(), 2, new CommonCallback<Boolean>() {
-                                            @Override
-                                            public void onSuccess(Boolean aBoolean) {
-                                                Log.d(Constants.TAG, "the result is  " + aBoolean);
-                                                updateProgress();
-                                            }
-
-                                            @Override
-                                            public void onFailed(int code, String msg) {
-                                                Log.d(Constants.TAG, "the code is " + code + " the msg is : " + msg);
-                                            }
-                                        });
-                                    } else {
-                                        ROXStageStrategy.getInstance(STRATEGY_ID).withdraw(task.getId(), 1, "jenkins.zhang", "xxx", "123", new CommonCallback<Boolean>() {
-                                            @Override
-                                            public void onSuccess(Boolean aBoolean) {
-                                                Log.d(Constants.TAG, "the result is  " + aBoolean);
-                                                updateProgress();
-                                            }
-
-                                            @Override
-                                            public void onFailed(int code, String msg) {
-                                                Log.d(Constants.TAG, "the code is " + code + " the msg is : " + msg);
-                                            }
-                                        });
-                                    }
+                                    go2Withdraw(withdrawStatus.getTaskId());
                                 }
                             });
-                            break;
+                        }
+                    } else {
+                        textView.setText("去完成任务");
                     }
+
+                } else if (status == WithdrawResult.STATUS_REMIT_SUCCESS) {
+                    textView.setText("已提现");
+                } else {
+                    textView.setText("处理中");
                 }
             }
+            mWithdrawContent.addView(view);
         }
     }
 
-    private View getViewByIndex(int index) {
-        int size = mStrategyContent.getChildCount();
-        for (int i = 0; i < size; i++) {
-            View view = mStrategyContent.getChildAt(i);
-            int tag = (int) view.getTag();
-            if (tag == index) {
-                return view;
+    private StageWithdrawTask getTaskConfig(String taskId) {
+        for (StageWithdrawTask withdrawTask : mStageWithdrawTasks) {
+            if (taskId.equals(withdrawTask.getId())) {
+                return withdrawTask;
             }
         }
         return null;
+    }
+
+    private void go2Withdraw(String taskId) {
+        // 获取提现配置信息，根据提现配置信息去提现
+        StageWithdrawTask task = getTaskConfig(taskId);
+        if (task.isExtreme()) {
+            ROXStageStrategy.getInstance(STRATEGY_ID).extremeWithdraw(taskId, new CommonCallback<Boolean>() {
+                @Override
+                public void onSuccess(Boolean aBoolean) {
+                    Log.d(Constants.TAG, "withdraw : " + aBoolean);
+                    ToastUtil.showToast(RichOXStageStrategyActivity.this, "提现成功");
+                    updateProgress();
+                }
+
+                @Override
+                public void onFailed(int code, String msg) {
+                    Log.d(Constants.TAG, "withdraw failed : " + code + " msg " + msg);
+                    ToastUtil.showToast(RichOXStageStrategyActivity.this, "提现失败");
+                }
+            });
+        } else {
+            String name = "张松顺";
+            String phone = "13770561390";
+            String card = "320911198512011934";
+            ROXStageStrategy.getInstance(STRATEGY_ID).withdraw(taskId, name, card, phone, new CommonCallback<Boolean>() {
+                @Override
+                public void onSuccess(Boolean aBoolean) {
+                    Log.d(Constants.TAG, "withdraw : " + aBoolean);
+                    ToastUtil.showToast(RichOXStageStrategyActivity.this, "提现成功");
+                    updateProgress();
+                }
+
+                @Override
+                public void onFailed(int code, String msg) {
+                    Log.d(Constants.TAG, "withdraw failed : " + code + " msg " + msg);
+                    ToastUtil.showToast(RichOXStageStrategyActivity.this, "提现失败");
+                }
+            });
+        }
     }
 
     private void initView() {
@@ -163,25 +216,33 @@ public class RichOXStageStrategyActivity extends BaseActivity {
                 ROXStageStrategy.getInstance(STRATEGY_ID).getStrategyConfig(new CommonCallback<StageStrategyConfig>() {
                     @Override
                     public void onSuccess(StageStrategyConfig stageStrategyConfig) {
-                        Log.d(Constants.TAG, "the common info is " + stageStrategyConfig.toString());
-                        List<StrategyMissionTask> stageMissionTaskList = stageStrategyConfig.getMissionTaskList();
-                        Log.d(Constants.TAG, "the mission task is: ");
-                        for (StrategyMissionTask task : stageMissionTaskList) {
-                            Log.d(Constants.TAG, task.toString());
-                        }
-                        Log.d(Constants.TAG, "the withdraw task is: ");
-                        List<StageWithdrawTask> stageWithdrawTaskList = stageStrategyConfig.getWithdrawTaskList();
-                        for (StageWithdrawTask task : stageWithdrawTaskList) {
-                            mStageWithdrawTaskMap.put(task.getIndex(), task);
-                            Log.d(Constants.TAG, task.toString());
-                        }
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                addView2StageContent();
+                        if (stageStrategyConfig != null) {
+                            Log.d(Constants.TAG, "the common info is " + stageStrategyConfig.toString());
+                            StageProgressConfig config = stageStrategyConfig.getStageProgressConfig();
+                            if (config != null) {
+                                List<BaseType> baseList = config.getTypeList();
+                                for (BaseType baseType : baseList) {
+                                    Log.d(Constants.TAG, baseType.toString());
+                                }
+
+                                mTaskList = config.getTaskList();
+                                for (StageMissionTask task : mTaskList) {
+                                    Log.d(Constants.TAG, task.toString());
+                                }
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        addView2MissionContent();
+                                    }
+                                });
+
                             }
-                        });
 
+                            mStageWithdrawTasks = stageStrategyConfig.getWithdrawTaskList();
+                            for (StageWithdrawTask withdrawTask : mStageWithdrawTasks) {
+                                Log.d(Constants.TAG, withdrawTask.toString());
+                            }
+                        }
                     }
 
                     @Override
@@ -192,101 +253,20 @@ public class RichOXStageStrategyActivity extends BaseActivity {
             }
         });
 
-        mStrategyContent = findViewById(R.id.strategy_content);
-
-        mDoMission = findViewById(R.id.demo_stage2_do_mission);
-        mDoMission.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ROXStageStrategy.getInstance(STRATEGY_ID).doMission(MISSION_ID, 5, new CommonCallback<StrategyMissionResult>() {
-                    @Override
-                    public void onSuccess(StrategyMissionResult result) {
-                        Log.d(Constants.TAG, "the result is  " + result.toString());
-                        updateProgress();
-                    }
-
-                    @Override
-                    public void onFailed(int code, String msg) {
-                        Log.d(Constants.TAG, "the code is " + code + " the msg is : " + msg);
-                    }
-                });
-            }
-        });
-
-        mGetStageInfo = findViewById(R.id.demo_stage2_query_stage);
-        mGetStageInfo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                updateProgress();
-            }
-        });
-
-        mExtremeWithdraw = findViewById(R.id.demo_stage2_extreme_withdraw);
-        mExtremeWithdraw.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ROXStageStrategy.getInstance(STRATEGY_ID).extremeWithdraw(EXTREME_WITHDRAW_ID, 2, new CommonCallback<Boolean>() {
-                    @Override
-                    public void onSuccess(Boolean aBoolean) {
-                        Log.d(Constants.TAG, "the result is  " + aBoolean);
-                        updateProgress();
-                    }
-
-                    @Override
-                    public void onFailed(int code, String msg) {
-                        Log.d(Constants.TAG, "the code is " + code + " the msg is : " + msg);
-                    }
-                });
-            }
-        });
-
-        mWithdraw = findViewById(R.id.demo_stage2_withdraw);
-        mWithdraw.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ROXStageStrategy.getInstance(STRATEGY_ID).withdraw(WITHDRAW_ID, 1, "jenkins.zhang", "xxx", "123", new CommonCallback<Boolean>() {
-                    @Override
-                    public void onSuccess(Boolean aBoolean) {
-                        Log.d(Constants.TAG, "the result is  " + aBoolean);
-                        updateProgress();
-                    }
-
-                    @Override
-                    public void onFailed(int code, String msg) {
-                        Log.d(Constants.TAG, "the code is " + code + " the msg is : " + msg);
-                    }
-                });
-            }
-        });
+        mWithdrawContent = findViewById(R.id.demo_stage2_withdraw_content);
+        mMissionContent = findViewById(R.id.demo_stage2_mission_content);
     }
 
     private void updateProgress() {
-        if (!TextUtils.isEmpty(RichOX.getUserId())) {
-
-        }
         ROXStageStrategy.getInstance(STRATEGY_ID).queryStageInfo(new CommonCallback<StageStrategyInfo>() {
             @Override
             public void onSuccess(StageStrategyInfo info) {
                 if (info != null) {
-                    Log.d(Constants.TAG, "the result is  " + info);
-                    Log.d(Constants.TAG, "the withdraw list :");
-                    // 返回提现记录
-                    List<StrategyWithdrawRecord> records = info.getWithdrawRecords();
-                    for (StrategyWithdrawRecord record : records) {
-                        Log.d(Constants.TAG, record.toString());
-                    }
-
-                    Log.d(Constants.TAG, "the withdraw status :");
-                    List<StageWithdrawStatus> statusList = info.getWithdrawStatus();
-                    for (StageWithdrawStatus status : statusList) {
-                        Log.d(Constants.TAG, status.toString());
-                        mWithdrawStatusMap.put(status.getTaskId(), status.getStatus());
-                    }
+                    mWithdrawStatusList = info.getWithdrawStatus();
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            // 更新阶梯信息
-                            updateStage(info);
+                            addView2WithdrawContent();
                         }
                     });
                 }

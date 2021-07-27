@@ -28,7 +28,7 @@ public class RichOXH5FloatActivity extends BaseActivity {
     private void initView() {
         mLottieLoad = findViewById(R.id.float_lottie);
         mLottieContent = findViewById(R.id.float_lottie_content);
-        final FloatScene scene = new FloatScene(getApplicationContext(), "50129", mLottieContent);
+        FloatScene scene = new FloatScene(getApplicationContext(), "50136", mLottieContent);
         scene.setSceneListener(new SceneListener() {
             @Override
             public void onLoaded() {
@@ -46,7 +46,7 @@ public class RichOXH5FloatActivity extends BaseActivity {
             }
 
             @Override
-            public void onLoadFailed(final RichOXH5Error error) {
+            public void onLoadFailed(RichOXH5Error error) {
                 Log.d(TAG, "on onLoadFailed");
                 runOnUiThread(new Runnable() {
                     @Override

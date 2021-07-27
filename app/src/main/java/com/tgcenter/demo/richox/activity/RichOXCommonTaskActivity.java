@@ -130,6 +130,7 @@ public class RichOXCommonTaskActivity extends BaseActivity {
                                 Log.d(TAG, bean.toString());
                             }
                         }
+
                     }
 
                     @Override

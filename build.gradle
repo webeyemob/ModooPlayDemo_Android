@@ -11,6 +11,9 @@ buildscript {
 
         // ModooPlay
         maven { url "https://bitbucket.org/sdkcenter/sdkcenter/raw/release" }
+
+        maven { url "https://bitbucket.org/maven-fission/fission/raw/release" }
+        maven { url "https://bitbucket.org/maven-gametools/gametools/raw/release" }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.0.2"

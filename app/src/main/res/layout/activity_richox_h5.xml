@@ -31,4 +31,11 @@
         style="@style/mine_text_style"
         android:text="entry样式" />
 
+    <View style="@style/divide_style" />
+
+    <TextView
+        android:id="@+id/richox_demo_h5_share"
+        style="@style/mine_text_style"
+        android:text="分享活动" />
+
 </LinearLayout>

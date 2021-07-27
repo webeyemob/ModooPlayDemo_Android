@@ -68,15 +68,15 @@ tgCenter {
         // richOX 模块相关依赖
         richOX = [
                 base                      : true,
-                base_oversea              : true,
+                base_oversea              : false,
                 interactive_scene         : true,
                 fission_moblink           : true,
-                fission_moblink_oversea   : true,
-                fission_firebase          : true,
+                fission_moblink_oversea   : false,
+                fission_firebase          : false,
                 sect                      : true,
                 strategy_normal           : true,
                 strategy_stage            : true,
-                toolbox                   : true
+                toolbox                   : false
         ]
     }
 }
@@ -166,22 +166,28 @@ dependencies {
 //    implementation 'com.fission.sdk:openinstall:2.5.1'
 //    implementation('com.richox.share:richox_fission_openinstall:1.0.5')
     // strategy fission
-//    implementation('com.richox.strategy:richox_strategy_fission:1.0.4')
+    implementation('com.richox.strategy:richox_strategy_fission:1.0.4')
 
-//    implementation 'com.richox.strategy.base:richox_strategy_base:1.0.6'
+//    implementation 'com.richox.strategy.base:richox_strategy_base:1.0.9'
     // normal strategy
-//    implementation('com.richox.strategy.normal:richox_normal_strategy:1.0.8')
+//    implementation('com.richox.strategy.normal:richox_normal_strategy:1.1.4')
     // stage strategy
-//    implementation('com.richox.strategy.stage:richox_stage_strategy:1.0.5')
+//    implementation('com.richox.strategy.stage:richox_stage_strategy:1.0.8')
     // sect
-//    implementation('com.richox.sect:richox_sect:1.0.6')
+//    implementation('com.richox.sect:richox_sect:1.1.0')
+    implementation('com.richox.toolbox:richox_toolbox:1.0.3_temp5')
 
     implementation 'com.github.bumptech.glide:glide:4.9.0'
 //    implementation 'com.tgcenter.unified:privacy:1.1.7'
 
     // wechat
-    implementation 'com.we.modoo:modoosdk:1.0.6'
+    implementation 'com.we.modoo:modoosdk:1.0.9'
     implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:6.6.4'
+
+    // facebook
+    implementation 'com.facebook.android:facebook-login:[5,6)'
+    // google
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
 
     // general
 //    implementation 'com.satori.sdk:eventio-openudid:1.0.3'

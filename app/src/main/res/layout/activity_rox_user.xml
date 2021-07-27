@@ -12,107 +12,97 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="center"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/richox_demo_sect_get_tong_info"
+                android:id="@+id/richox_demo_roxuser_register_vistor"
                 style="@style/mine_text_style"
-                android:text="获取宗门信息" />
+                android:text="游客注册" />
 
             <View style="@style/divide_style" />
 
             <TextView
-                android:id="@+id/richox_demo_sect_get_user_status"
+                android:id="@+id/richox_demo_roxuser_wx_login"
                 style="@style/mine_text_style"
-                android:text="用户状态" />
+                android:text="微信登陆" />
 
             <View style="@style/divide_style" />
 
             <TextView
-                android:id="@+id/richox_demo_sect_get_students"
+                android:id="@+id/richox_demo_roxuser_wx_register"
                 style="@style/mine_text_style"
-                android:text="分页获取某级弟子信息" />
+                android:text="微信注册" />
 
             <View style="@style/divide_style" />
 
             <TextView
-                android:id="@+id/richox_demo_sect_get_student_detail"
+                android:id="@+id/richox_demo_roxuser_google_login"
                 style="@style/mine_text_style"
-                android:text="获取弟子详细信息" />
+                android:text="google登陆" />
+
+            <View style="@style/divide_style" />
+
+
+            <TextView
+                android:id="@+id/richox_demo_roxuser_google_register"
+                style="@style/mine_text_style"
+                android:text="google注册" />
 
             <View style="@style/divide_style" />
 
             <TextView
-                android:id="@+id/richox_demo_sect_gen_star"
+                android:id="@+id/richox_demo_roxuser_fb_login"
                 style="@style/mine_text_style"
-                android:text="产生贡献值" />
+                android:text="FB登陆" />
 
             <View style="@style/divide_style" />
 
             <TextView
-                android:id="@+id/richox_demo_sect_get_star"
+                android:id="@+id/richox_demo_roxuser_fb_register"
                 style="@style/mine_text_style"
-                android:text="领取贡献值" />
+                android:text="FB注册" />
 
             <View style="@style/divide_style" />
 
-            <TextView
-                android:id="@+id/richox_demo_sect_get_star_all"
-                style="@style/mine_text_style"
-                android:text="领取所有贡献值" />
-
-            <View style="@style/divide_style" />
 
             <TextView
-                android:id="@+id/richox_demo_sect_get_invite_config_list"
+                android:id="@+id/richox_demo_roxuser_bind_account"
                 style="@style/mine_text_style"
-                android:text="获取招募奖励配置" />
+                android:text="绑定账号" />
 
 
             <View style="@style/divide_style" />
 
             <TextView
-                android:id="@+id/richox_demo_sect_get_invite_award"
+                android:id="@+id/richox_demo_roxuser_get_user_info"
                 style="@style/mine_text_style"
-                android:text="领取招募奖励" />
+                android:text="获取用户信息" />
+
+            <View style="@style/divide_style" />
+
+
+            <TextView
+                android:id="@+id/richox_demo_roxuser_get_teacher"
+                style="@style/mine_text_style"
+                android:text="获取邀请Id" />
 
             <View style="@style/divide_style" />
 
             <TextView
-                android:id="@+id/richox_demo_sect_bind_inviter"
+                android:id="@+id/richox_demo_roxuser_bind_inviter"
                 style="@style/mine_text_style"
-                android:text="异步绑定邀请者" />
+                android:text="绑定师徒关系" />
 
             <View style="@style/divide_style" />
 
-            <TextView
-                android:id="@+id/richox_demo_sect_get_star_day_record"
-                style="@style/mine_text_style"
-                android:text="获取贡献记录(按天)" />
-
-            <View style="@style/divide_style" />
 
             <TextView
-                android:id="@+id/richox_demo_sect_get_red_packet_record"
+                android:id="@+id/richox_demo_roxuser_unregister"
                 style="@style/mine_text_style"
-                android:text="获取红包记录" />
-
-            <View style="@style/divide_style" />
-
-            <TextView
-                android:id="@+id/richox_demo_sect_transform"
-                style="@style/mine_text_style"
-                android:text="进行现金兑换" />
-
-            <View style="@style/divide_style" />
-
-            <TextView
-                android:id="@+id/richox_demo_sect_get_settings"
-                style="@style/mine_text_style"
-                android:text="宗门设置" />
+                android:text="用户注销" />
 
         </LinearLayout>
     </ScrollView>
-
 
 </LinearLayout>

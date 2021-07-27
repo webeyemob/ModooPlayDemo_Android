@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/demo_stage2_query_piggy_bank"
+            style="@style/mine_text_style"
+            android:text="查询储蓄罐" />
+
+        <View style="@style/divide_style" />
+
+        <TextView
+            android:id="@+id/demo_stage2_piggy_bank_withdraw"
+            style="@style/mine_text_style"
+            android:text="储蓄罐提取资产" />
+
+        <View style="@style/divide_style" />
+
+        <TextView
+            android:id="@+id/demo_stage2_chat_get_group"
+            style="@style/mine_text_style"
+            android:text="拉取群组信息" />
+
+        <View style="@style/divide_style" />
+
+        <TextView
+            android:id="@+id/demo_stage2_chat_get_messages"
+            style="@style/mine_text_style"
+            android:text="获取聊天信息" />
+
+        <View style="@style/divide_style" />
+
+        <TextView
+            android:id="@+id/demo_stage2_chat_push_message"
+            style="@style/mine_text_style"
+            android:text="发送信息" />
+
+    </LinearLayout>
+
+</ScrollView>

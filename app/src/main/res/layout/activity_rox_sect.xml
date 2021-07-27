@@ -12,6 +12,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="center"
             android:orientation="vertical">
 
             <TextView
@@ -64,17 +65,9 @@
             <View style="@style/divide_style" />
 
             <TextView
-                android:id="@+id/richox_demo_sect_get_invite_config_list"
+                android:id="@+id/richox_demo_sect_get_settings"
                 style="@style/mine_text_style"
-                android:text="获取招募奖励配置" />
-
-
-            <View style="@style/divide_style" />
-
-            <TextView
-                android:id="@+id/richox_demo_sect_get_invite_award"
-                style="@style/mine_text_style"
-                android:text="领取招募奖励" />
+                android:text="宗门设置" />
 
             <View style="@style/divide_style" />
 
@@ -86,30 +79,16 @@
             <View style="@style/divide_style" />
 
             <TextView
-                android:id="@+id/richox_demo_sect_get_star_day_record"
+                android:id="@+id/richox_demo_sect_ranking"
                 style="@style/mine_text_style"
-                android:text="获取贡献记录(按天)" />
+                android:text="排行榜" />
 
             <View style="@style/divide_style" />
 
             <TextView
-                android:id="@+id/richox_demo_sect_get_red_packet_record"
+                android:id="@+id/richox_demo_sect_invite_counts"
                 style="@style/mine_text_style"
-                android:text="获取红包记录" />
-
-            <View style="@style/divide_style" />
-
-            <TextView
-                android:id="@+id/richox_demo_sect_transform"
-                style="@style/mine_text_style"
-                android:text="进行现金兑换" />
-
-            <View style="@style/divide_style" />
-
-            <TextView
-                android:id="@+id/richox_demo_sect_get_settings"
-                style="@style/mine_text_style"
-                android:text="宗门设置" />
+                android:text="邀请总人数" />
 
         </LinearLayout>
     </ScrollView>

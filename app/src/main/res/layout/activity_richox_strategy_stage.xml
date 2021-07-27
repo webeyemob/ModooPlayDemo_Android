@@ -13,37 +13,21 @@
     <View style="@style/divide_style" />
 
     <LinearLayout
-        android:id="@+id/strategy_content"
+        android:id="@+id/demo_stage2_withdraw_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:orientation="vertical" />
 
-    <TextView
-        android:id="@+id/demo_stage2_do_mission"
-        style="@style/mine_text_style"
-        android:text="提交任务" />
-
     <View style="@style/divide_style" />
 
-    <TextView
-        android:id="@+id/demo_stage2_query_stage"
-        style="@style/mine_text_style"
-        android:text="查询进度" />
+    <LinearLayout
+        android:id="@+id/demo_stage2_mission_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical" />
 
     <View style="@style/divide_style" />
-
-    <TextView
-        android:id="@+id/demo_stage2_extreme_withdraw"
-        style="@style/mine_text_style"
-        android:text="极速提现" />
-
-    <View style="@style/divide_style" />
-
-    <TextView
-        android:id="@+id/demo_stage2_withdraw"
-        style="@style/mine_text_style"
-        android:text="普通提现" />
-
 
 </LinearLayout>

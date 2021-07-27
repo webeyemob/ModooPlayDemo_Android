@@ -5,69 +5,86 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/richox_demo_user_register_vistor"
-        style="@style/mine_text_style"
-        android:text="游客注册" />
-
-    <View style="@style/divide_style" />
-
-    <TextView
-        android:id="@+id/richox_demo_user_wx_login"
-        style="@style/mine_text_style"
-        android:text="微信登陆" />
-
-    <View style="@style/divide_style" />
-
-    <TextView
-        android:id="@+id/richox_demo_user_wx_register"
-        style="@style/mine_text_style"
-        android:text="微信注册" />
-
-    <View style="@style/divide_style" />
-
-
-    <TextView
-        android:id="@+id/richox_demo_user_bind_account"
-        style="@style/mine_text_style"
-        android:text="绑定账号" />
-
-
-    <View style="@style/divide_style" />
-
-    <TextView
-        android:id="@+id/richox_demo_user_get_user_info"
-        style="@style/mine_text_style"
-        android:text="获取用户信息" />
-
-    <View style="@style/divide_style" />
-
-    <TextView
-        android:id="@+id/richox_demo_user_get_user_ranking"
-        style="@style/mine_text_style"
-        android:text="获取用户排行" />
-
-    <View style="@style/divide_style" />
-
-    <TextView
-        android:id="@+id/richox_demo_user_get_special_user"
-        style="@style/mine_text_style"
-        android:text="获取指定用户信息" />
-
-    <View
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="2dp" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/richox_demo_user_get_token_info"
-        style="@style/mine_text_style"
-        android:text="获取token信息" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/richox_demo_user_register_vistor"
+                style="@style/mine_text_style"
+                android:text="游客注册" />
 
-    <View style="@style/divide_style" />
+            <View style="@style/divide_style" />
 
-    <TextView
-        android:id="@+id/richox_demo_user_unregister"
-        style="@style/mine_text_style"
-        android:text="用户注销" />
+            <TextView
+                android:id="@+id/richox_demo_user_wx_login"
+                style="@style/mine_text_style"
+                android:text="微信登陆" />
+
+            <View style="@style/divide_style" />
+
+            <TextView
+                android:id="@+id/richox_demo_user_wx_register"
+                style="@style/mine_text_style"
+                android:text="微信注册" />
+
+            <View style="@style/divide_style" />
+
+
+            <TextView
+                android:id="@+id/richox_demo_user_bind_account"
+                style="@style/mine_text_style"
+                android:text="绑定账号" />
+
+
+            <View style="@style/divide_style" />
+
+            <TextView
+                android:id="@+id/richox_demo_user_get_user_info"
+                style="@style/mine_text_style"
+                android:text="获取用户信息" />
+
+            <View style="@style/divide_style" />
+
+            <TextView
+                android:id="@+id/richox_demo_user_get_user_ranking"
+                style="@style/mine_text_style"
+                android:text="获取用户排行" />
+
+            <View style="@style/divide_style" />
+
+            <TextView
+                android:id="@+id/richox_demo_user_get_special_user"
+                style="@style/mine_text_style"
+                android:text="获取指定用户信息" />
+
+            <View style="@style/divide_style" />
+
+            <TextView
+                android:id="@+id/richox_demo_user_get_token_info"
+                style="@style/mine_text_style"
+                android:text="获取token信息" />
+
+            <View style="@style/divide_style" />
+
+            <TextView
+                android:id="@+id/richox_demo_user_bind_inviter"
+                style="@style/mine_text_style"
+                android:text="师徒关系绑定" />
+
+            <View style="@style/divide_style" />
+
+            <TextView
+                android:id="@+id/richox_demo_user_unregister"
+                style="@style/mine_text_style"
+                android:text="用户注销" />
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

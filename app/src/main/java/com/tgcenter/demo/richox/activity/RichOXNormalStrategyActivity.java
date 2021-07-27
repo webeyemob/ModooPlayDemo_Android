@@ -6,9 +6,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.richox.base.CommonCallback;
-import com.tgcenter.demo.R;
-import com.tgcenter.demo.ads.base.BaseActivity;
-import com.tgcenter.demo.richox.constance.Constants;
 import com.richox.strategy.base.bean.StrategyAsset;
 import com.richox.strategy.base.bean.StrategyExchangeTask;
 import com.richox.strategy.base.bean.StrategyMissionTask;
@@ -17,10 +14,15 @@ import com.richox.strategy.normal.ROXNormalStrategy;
 import com.richox.strategy.normal.bean.NormalAssetStock;
 import com.richox.strategy.normal.bean.NormalAssetsInfo;
 import com.richox.strategy.normal.bean.NormalMissionResult;
+import com.richox.strategy.normal.bean.NormalMissionsProgress;
 import com.richox.strategy.normal.bean.NormalStrategyConfig;
 import com.richox.strategy.normal.bean.NormalStrategyWithdrawTask;
 import com.richox.strategy.normal.bean.NormalTransformResult;
+import com.tgcenter.demo.R;
+import com.tgcenter.demo.ads.base.BaseActivity;
+import com.tgcenter.demo.richox.constance.Constants;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RichOXNormalStrategyActivity extends BaseActivity {
@@ -30,13 +32,17 @@ public class RichOXNormalStrategyActivity extends BaseActivity {
     private TextView mGetStageInfo;
     private TextView mExtremeWithdraw;
     private TextView mWithdraw;
+    private TextView mExtremeWithdrawNew;
+    private TextView mWithdrawNew;
     private TextView mTransform;
     private TextView mTransformAll;
+    private TextView mQueryMissions;
+    private TextView mQueryMissionsAll;
 
-    private final int STRATEGY_ID = 151;
-    private final String MISSION_ID_FIXED = "dailyfrag";
+    private final int STRATEGY_ID = 262;
+    //    private final String MISSION_ID_FIXED = "dailyconsume2";
     private final String MISSION_ID_MAX = "dailycoin";
-    //    private final String MISSION_ID_FIXED = "dailyconsume";
+    private final String MISSION_ID_FIXED = "dailyconsume";
     private final String EXTREME_WITHDRAW_ID = "withdraw03";
     private final String WITHDRAW_ID = "withdraw3";
     private final String TRANSFORM_ID = "cointocash";
@@ -106,7 +112,6 @@ public class RichOXNormalStrategyActivity extends BaseActivity {
                         for (NormalAssetStock stock : stocks) {
                             Log.d(Constants.TAG, stock.toString());
                         }
-
                     }
 
                     @Override
@@ -172,14 +177,53 @@ public class RichOXNormalStrategyActivity extends BaseActivity {
             }
         });
 
+        mExtremeWithdrawNew = findViewById(R.id.demo_stage2_extreme_withdraw2);
+        mExtremeWithdrawNew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ROXNormalStrategy.getInstance(STRATEGY_ID).extremeWithdrawNew(EXTREME_WITHDRAW_ID, new CommonCallback<List<NormalAssetStock>>() {
+                    public void onSuccess(List<NormalAssetStock> list) {
+                        for (NormalAssetStock stock : list) {
+                            Log.d(Constants.TAG, "the result is  " + stock.toString());
+                        }
+                    }
+
+                    @Override
+                    public void onFailed(int code, String msg) {
+                        Log.d(Constants.TAG, "the code is " + code + " the msg is : " + msg);
+                    }
+                });
+            }
+        });
+
+        mWithdrawNew = findViewById(R.id.demo_stage2_withdraw2);
+        mWithdrawNew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ROXNormalStrategy.getInstance(STRATEGY_ID).withdrawNew(WITHDRAW_ID, "*", "*", "*", new CommonCallback<List<NormalAssetStock>>() {
+                    @Override
+                    public void onSuccess(List<NormalAssetStock> list) {
+                        for (NormalAssetStock stock : list) {
+                            Log.d(Constants.TAG, "the result is  " + stock.toString());
+                        }
+
+                    }
+
+                    @Override
+                    public void onFailed(int code, String msg) {
+                        Log.d(Constants.TAG, "the code is " + code + " the msg is : " + msg);
+                    }
+                });
+            }
+        });
+
         mExtremeWithdraw = findViewById(R.id.demo_stage2_extreme_withdraw);
         mExtremeWithdraw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ROXNormalStrategy.getInstance(STRATEGY_ID).extremeWithdraw(EXTREME_WITHDRAW_ID, new CommonCallback<Boolean>() {
-                    @Override
-                    public void onSuccess(Boolean aBoolean) {
-                        Log.d(Constants.TAG, "the result is  " + aBoolean);
+                    public void onSuccess(Boolean result) {
+                        Log.d(Constants.TAG, "the result is  " + result.toString());
                     }
 
                     @Override
@@ -194,10 +238,10 @@ public class RichOXNormalStrategyActivity extends BaseActivity {
         mWithdraw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ROXNormalStrategy.getInstance(STRATEGY_ID).withdraw(WITHDRAW_ID, "jenkins.zhang", "xxx", "123", new CommonCallback<Boolean>() {
+                ROXNormalStrategy.getInstance(STRATEGY_ID).withdraw(WITHDRAW_ID, "*", "*", "*", new CommonCallback<Boolean>() {
                     @Override
-                    public void onSuccess(Boolean aBoolean) {
-                        Log.d(Constants.TAG, "the result is  " + aBoolean);
+                    public void onSuccess(Boolean result) {
+                        Log.d(Constants.TAG, "the result is  " + result.toString());
                     }
 
                     @Override
@@ -268,5 +312,56 @@ public class RichOXNormalStrategyActivity extends BaseActivity {
                 });
             }
         });
+
+        mQueryMissions = findViewById(R.id.demo_stage2_query_missions);
+        mQueryMissions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                List<String> list = new ArrayList<>();
+                list.add(MISSION_ID_MAX);
+                list.add(MISSION_ID_FIXED);
+                ROXNormalStrategy.getInstance(STRATEGY_ID).queryProgress(list, new CommonCallback<NormalMissionsProgress>() {
+                    @Override
+                    public void onSuccess(NormalMissionsProgress normalMissionsProgress) {
+                        Log.d(Constants.TAG, normalMissionsProgress.toString());
+                        if (normalMissionsProgress.getMissionList() != null) {
+                            for (NormalMissionsProgress.MissionProgress progress : normalMissionsProgress.getMissionList()) {
+                                Log.d(Constants.TAG, progress.toString());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailed(int code, String msg) {
+                        Log.d(Constants.TAG, "the code is " + code + " the msg is : " + msg);
+                    }
+                });
+            }
+        });
+
+
+        mQueryMissionsAll = findViewById(R.id.demo_stage2_query_missions_all);
+        mQueryMissionsAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ROXNormalStrategy.getInstance(STRATEGY_ID).queryAllProgress(new CommonCallback<NormalMissionsProgress>() {
+                    @Override
+                    public void onSuccess(NormalMissionsProgress normalMissionsProgress) {
+                        Log.d(Constants.TAG, normalMissionsProgress.toString());
+                        if (normalMissionsProgress.getMissionList() != null) {
+                            for (NormalMissionsProgress.MissionProgress progress : normalMissionsProgress.getMissionList()) {
+                                Log.d(Constants.TAG, progress.toString());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailed(int code, String msg) {
+                        Log.d(Constants.TAG, "the code is " + code + " the msg is : " + msg);
+                    }
+                });
+            }
+        });
+
     }
 }

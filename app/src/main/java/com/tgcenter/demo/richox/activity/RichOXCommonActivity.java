@@ -8,15 +8,14 @@ import android.widget.TextView;
 import com.tgcenter.demo.R;
 import com.tgcenter.demo.ads.base.BaseActivity;
 
-
 public class RichOXCommonActivity extends BaseActivity {
     private final String TAG = "FissionDemo";
 
     private TextView mUserActivity;
+    private TextView mROXUserActivity;
     private TextView mTaskActivity;
     private TextView mWithdrawActivity;
     private TextView mDataActivity;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +32,17 @@ public class RichOXCommonActivity extends BaseActivity {
             public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.setClass(RichOXCommonActivity.this, RichOXCommonUserActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
+
+        mROXUserActivity = findViewById(R.id.demo_activity_richox_common_rox_user);
+        mROXUserActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(RichOXCommonActivity.this, ROXUserActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
@@ -72,4 +82,6 @@ public class RichOXCommonActivity extends BaseActivity {
         });
 
     }
+
+
 }

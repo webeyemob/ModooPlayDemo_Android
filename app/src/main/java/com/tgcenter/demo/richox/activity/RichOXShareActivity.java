@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.richox.share.RichOXShare;
 import com.richox.share.ShareCallback;
+import com.richox.share.ShareConstant;
 import com.tgcenter.demo.R;
 import com.tgcenter.demo.ads.base.BaseActivity;
 import com.tgcenter.demo.richox.constance.Constants;
@@ -24,6 +25,10 @@ public class RichOXShareActivity extends BaseActivity {
     private ImageView mQRImageView;
 
     private TextView mRestoreScene;
+
+    private TextView mBeginShareEvent;
+    private TextView mStartShareEvent;
+    private TextView mBindEvent;
 
     private String mShareUrl;
 
@@ -45,8 +50,17 @@ public class RichOXShareActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 HashMap<String, Object> map = new HashMap<>();
-                map.put("uid", "123456");
-                RichOXShare.genShareUrl("http://share.msgcarry.cn/share/doudizhu.html", map, new ShareCallback<String>() {
+//                map.put("uid", "123456");
+                map.put(ShareConstant.FISSION_ACTIVITY_NAME, "testActivity");
+                map.put(ShareConstant.FISSION_SHARE_CHANNEL_ID, "testChannel");
+//                map.put("platform", "android");
+                map.put("share_type", "share_book_detail");
+                map.put("book_id", "af1a4a613969ff4a0fb8a8aa");
+//                map.put(RichOXShare.DOMAIN_HOST, "https://novelnow.page.link");
+//                map.put(RichOXShare.IOS_PARAMS_BUNDLE_ID, "com.novel.romance");
+//                map.put(RichOXShare.IOS_PARAMS_APPSTORE_ID, "1552127129");
+//                map.put(RichOXShare.IOS_PARAMS_FORCE_SHOW_PREVIEW, true);
+                RichOXShare.genShareUrl("http://share.openmobiles.com/pages/novel_share_now.html", map, new ShareCallback<String>() {
                     @Override
                     public void onSuccess(String result) {
                         mShareUrl = result;
@@ -112,7 +126,30 @@ public class RichOXShareActivity extends BaseActivity {
                 });
             }
         });
-    }
 
+        mBeginShareEvent = findViewById(R.id.richox_demo_share_event_begin_share);
+        mBeginShareEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RichOXShare.reportOpenShare();
+            }
+        });
+
+        mStartShareEvent = findViewById(R.id.richox_demo_share_event_start_share);
+        mStartShareEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RichOXShare.reportStartShare();
+            }
+        });
+
+        mBindEvent = findViewById(R.id.richox_demo_share_event_report_bind);
+        mBindEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RichOXShare.reportBindEvent();
+            }
+        });
+    }
 
 }

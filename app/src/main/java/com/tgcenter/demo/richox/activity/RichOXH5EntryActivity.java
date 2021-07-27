@@ -26,7 +26,7 @@ public class RichOXH5EntryActivity extends BaseActivity {
 
     private void initView() {
         mEnter = findViewById(R.id.enter_button);
-        final EnterScene scene = new EnterScene(getApplicationContext(), "50076");
+        EnterScene scene = new EnterScene(getApplicationContext(), "50129");
         mEnter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,7 +43,7 @@ public class RichOXH5EntryActivity extends BaseActivity {
                     }
 
                     @Override
-                    public void onLoadFailed(final RichOXH5Error error) {
+                    public void onLoadFailed(RichOXH5Error error) {
                         Log.d(TAG, "on onLoadFailed");
                         runOnUiThread(new Runnable() {
                             @Override

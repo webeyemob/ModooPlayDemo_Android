@@ -18,6 +18,7 @@ import com.richox.base.bean.user.UserTokenBean;
 import com.tgcenter.demo.R;
 import com.tgcenter.demo.ads.base.BaseActivity;
 import com.tgcenter.demo.richox.constance.Constants;
+import com.tgcenter.demo.richox.util.ToastUtil;
 import com.we.modoo.ModooHelper;
 import com.we.modoo.callback.LoginCallback;
 import com.we.modoo.core.LoginType;
@@ -45,6 +46,9 @@ public class RichOXCommonUserActivity extends BaseActivity {
 
     private static TextView mGetUserButton;
     private static TextView mGetUserRanking;
+
+    private static TextView mBindInviter;
+
     private static TextView mUnregisterButton;
 
     @Override
@@ -247,6 +251,25 @@ public class RichOXCommonUserActivity extends BaseActivity {
 
                     @Override
                     public void onFailed(int code, String msg) {
+                        Log.d(TAG, "code is " + code + " msg: " + msg);
+                    }
+                });
+            }
+        });
+
+        mBindInviter = findViewById(R.id.richox_demo_user_bind_inviter);
+        mBindInviter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RichOXUser.bindInviter("4bf1ce3b2cc8f829", new CommonCallback<Boolean>() {
+                    @Override
+                    public void onSuccess(Boolean aBoolean) {
+                        ToastUtil.showToast(RichOXCommonUserActivity.this, "绑定成功");
+                    }
+
+                    @Override
+                    public void onFailed(int code, String msg) {
+                        ToastUtil.showToast(RichOXCommonUserActivity.this, "绑定失败");
                         Log.d(TAG, "code is " + code + " msg: " + msg);
                     }
                 });

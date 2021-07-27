@@ -71,11 +71,15 @@
             android:name=".anti_addiction.CustomTimeLimitActivity"
             android:theme="@style/Theme.AppCompat.Dialog" />
 
+        https://developer.modooplay.com/docs/zh/integration/android/richox/richox_share_firebase.html
+
         <activity android:name=".richox.RichOXMainActivity"/>
 
         <activity android:name=".richox.activity.RichOXH5Activity" />
 
-        <activity android:name=".richox.activity.RichOXH5FloatActivity" />
+        <activity
+            android:name=".richox.activity.RichOXH5FloatActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
 
         <activity android:name=".richox.activity.RichOXH5DialogActivity" />
 
@@ -99,9 +103,35 @@
 
         <activity android:name=".richox.activity.RichOXNormalStrategyActivity" />
 
-        <activity android:name=".richox.activity.RichOXShareActivity" />
+        <activity android:name=".richox.activity.RichOXNormalStrategyCustomActivity" />
+
+        <activity android:name=".richox.activity.RichOXShareActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="novelnow.page.link"
+                    android:scheme="http" />
+                <data
+                    android:host="novelnow.page.link"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
 
         <activity android:name=".richox.activity.RichOXSectActivity" />
+
+        <activity android:name=".richox.activity.EventActivity" />
+
+        <activity android:name=".richox.activity.RichOXH5ShareActivity" />
+
+        <activity android:name=".richox.activity.ROXUserActivity" />
+
+        <activity android:name=".richox.activity.ROXSectActivity" />
+
+        <activity android:name=".richox.activity.ToolboxActivity" />
 
         <activity-alias
             android:name="${applicationId}.wxapi.WXEntryActivity"
@@ -111,6 +141,27 @@
         <meta-data
             android:name="com.openinstall.APP_KEY"
             android:value="qqmerp" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter><action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+        </activity>
+
 
     </application>
 </manifest>
