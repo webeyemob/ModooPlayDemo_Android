@@ -76,7 +76,7 @@ tgCenter {
                 sect                      : true,
                 strategy_normal           : true,
                 strategy_stage            : true,
-                toolbox                   : false
+                toolbox                   : true
         ]
     }
 }
@@ -155,30 +155,8 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.multidex:multidex:2.0.1'
 
-    // base
-//    implementation('com.richox.base:richox_base:1.0.8')
-    // h5
-//    implementation('com.richox.sdk:richox_h5:2.0.8')
-//    implementation 'com.airbnb.android:lottie:2.7.0'
-//    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.15'
-    // share
-//    implementation 'com.google.zxing:core:3.3.0'
-//    implementation 'com.fission.sdk:openinstall:2.5.1'
-//    implementation('com.richox.share:richox_fission_openinstall:1.0.5')
     // strategy fission
     implementation('com.richox.strategy:richox_strategy_fission:1.0.4')
-
-//    implementation 'com.richox.strategy.base:richox_strategy_base:1.0.9'
-    // normal strategy
-//    implementation('com.richox.strategy.normal:richox_normal_strategy:1.1.4')
-    // stage strategy
-//    implementation('com.richox.strategy.stage:richox_stage_strategy:1.0.8')
-    // sect
-//    implementation('com.richox.sect:richox_sect:1.1.0')
-    implementation('com.richox.toolbox:richox_toolbox:1.0.3_temp5')
-
-    implementation 'com.github.bumptech.glide:glide:4.9.0'
-//    implementation 'com.tgcenter.unified:privacy:1.1.7'
 
     // wechat
     implementation 'com.we.modoo:modoosdk:1.0.9'
@@ -189,12 +167,7 @@ dependencies {
     // google
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
 
-    // general
-//    implementation 'com.satori.sdk:eventio-openudid:1.0.3'
-//    implementation 'com.satori.sdk:eventio-crashlytics:1.0.5'
-//    implementation 'com.satori.sdk:eventio-go:2.1.1.2'
-//    implementation 'com.satori.sdk:miit_mdid:1.0.13'
-
+    implementation "com.github.bumptech.glide:glide:4.9.0"
 }
 
 configurations.all {

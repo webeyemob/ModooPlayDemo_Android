@@ -71,8 +71,6 @@
             android:name=".anti_addiction.CustomTimeLimitActivity"
             android:theme="@style/Theme.AppCompat.Dialog" />
 
-        https://developer.modooplay.com/docs/zh/integration/android/richox/richox_share_firebase.html
-
         <activity android:name=".richox.RichOXMainActivity"/>
 
         <activity android:name=".richox.activity.RichOXH5Activity" />
