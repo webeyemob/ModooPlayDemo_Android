@@ -13,7 +13,7 @@ buildscript {
         maven { url "https://bitbucket.org/sdkcenter/sdkcenter/raw/release" }
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:3.4.1"
+        classpath "com.android.tools.build:gradle:4.0.2"
 
         // ModooPlay
         classpath "com.tgcenter.unified:plugin:1.8"
