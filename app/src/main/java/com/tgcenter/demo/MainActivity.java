@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private final String TAG = "MainActivity";
 
     // 产品渠道
-    public static final String Channel = "channel";
+    public static final String Channel = "your_channel";
 
     private Button mDebugPageButton;
     private Button mWeChatButton;
