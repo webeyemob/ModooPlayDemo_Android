@@ -57,6 +57,7 @@ tgCenter {
                 mobrain_mintegral: true, // 穿山甲聚合-Mintegral
                 mobrain_baidu    : true, // 穿山甲聚合-百度
                 mobrain_unity_ads: true, // 穿山甲聚合-Unity Ads
+                mobrain_yky      : true, // 穿山甲聚合-Unity Ads
                 toutiao          : false, // 穿山甲
                 ylh              : false, // 优量汇
                 kuaishou         : false, // 快手
