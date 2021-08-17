@@ -57,7 +57,7 @@ tgCenter {
                 mobrain_mintegral: true, // 穿山甲聚合-Mintegral
                 mobrain_baidu    : true, // 穿山甲聚合-百度
                 mobrain_unity_ads: true, // 穿山甲聚合-Unity Ads
-                mobrain_yky      : true, // 穿山甲聚合-Unity Ads
+                mobrain_yky      : true, // 穿山甲聚合-YKY
                 toutiao          : false, // 穿山甲
                 ylh              : false, // 优量汇
                 kuaishou         : false, // 快手
@@ -68,16 +68,16 @@ tgCenter {
 
         // richOX 模块相关依赖
         richOX = [
-                base                      : true,
-                base_oversea              : false,
-                interactive_scene         : true,
-                fission_moblink           : true,
-                fission_moblink_oversea   : false,
-                fission_firebase          : false,
-                sect                      : true,
-                strategy_normal           : true,
-                strategy_stage            : true,
-                toolbox                   : true
+                base                   : true,
+                base_oversea           : false,
+                interactive_scene      : true,
+                fission_moblink        : true,
+                fission_moblink_oversea: false,
+                fission_firebase       : false,
+                sect                   : true,
+                strategy_normal        : true,
+                strategy_stage         : true,
+                toolbox                : true
         ]
     }
 }
@@ -101,12 +101,12 @@ android {
         }
 
         manifestPlaceholders = [
-                "MainChId": lebian.meta_MainChId,
-                "ClientChId": lebian.meta_ClientChId,
-                "LEBIAN_SECID": lebian.meta_LEBIAN_SECID,
+                "MainChId"          : lebian.meta_MainChId,
+                "ClientChId"        : lebian.meta_ClientChId,
+                "LEBIAN_SECID"      : lebian.meta_LEBIAN_SECID,
                 "LEBIAN_APPLICATION": 'com.excelliance.open.LBApplication',
-                "screenOrientation": lebian.screenOrientation,
-                "lb_target_pkgname": (lebian.packageName ? lebian.packageName :'${applicationId}')
+                "screenOrientation" : lebian.screenOrientation,
+                "lb_target_pkgname" : (lebian.packageName ? lebian.packageName : '${applicationId}')
         ]
     }
 
