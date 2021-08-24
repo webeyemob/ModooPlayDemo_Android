@@ -13,11 +13,11 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import com.taurusx.ads.core.api.model.AdType;
+import com.taurusx.ads.core.api.utils.ScreenUtil;
 import com.tgcenter.demo.R;
 import com.tgcenter.demo.ads.base.BaseActivity;
 import com.tgcenter.demo.ads.utils.Constant;
-import com.taurusx.ads.core.api.model.AdType;
-import com.taurusx.ads.core.api.utils.ScreenUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;

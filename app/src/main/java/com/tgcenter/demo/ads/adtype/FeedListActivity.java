@@ -8,10 +8,6 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 
-import com.tgcenter.demo.R;
-import com.tgcenter.demo.ads.base.BaseActivity;
-import com.tgcenter.demo.ads.utils.Constant;
-import com.tgcenter.demo.ads.utils.Utils;
 import com.taurusx.ads.core.api.ad.config.AdSize;
 import com.taurusx.ads.core.api.ad.feedlist.Feed;
 import com.taurusx.ads.core.api.ad.feedlist.FeedList;
@@ -22,6 +18,10 @@ import com.taurusx.ads.core.api.model.ILineItem;
 import com.taurusx.ads.core.api.utils.LogUtil;
 import com.taurusx.ads.core.api.utils.ScreenUtil;
 import com.taurusx.ads.core.api.utils.ViewUtil;
+import com.tgcenter.demo.R;
+import com.tgcenter.demo.ads.base.BaseActivity;
+import com.tgcenter.demo.ads.utils.Constant;
+import com.tgcenter.demo.ads.utils.Utils;
 
 import java.util.List;
 

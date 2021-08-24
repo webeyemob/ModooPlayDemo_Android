@@ -4,16 +4,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.tgcenter.demo.R;
-import com.tgcenter.demo.ads.base.BaseActivity;
-import com.tgcenter.demo.ads.utils.Constant;
-import com.tgcenter.demo.ads.utils.Utils;
 import com.taurusx.ads.core.api.ad.mixfull.MixFullScreenAd;
 import com.taurusx.ads.core.api.ad.nativead.layout.NativeAdLayout;
 import com.taurusx.ads.core.api.listener.AdError;
 import com.taurusx.ads.core.api.listener.newapi.AdListener;
 import com.taurusx.ads.core.api.model.ILineItem;
 import com.taurusx.ads.core.api.utils.LogUtil;
+import com.tgcenter.demo.R;
+import com.tgcenter.demo.ads.base.BaseActivity;
+import com.tgcenter.demo.ads.utils.Constant;
+import com.tgcenter.demo.ads.utils.Utils;
 
 public class MixFullScreenActivity extends BaseActivity {
 

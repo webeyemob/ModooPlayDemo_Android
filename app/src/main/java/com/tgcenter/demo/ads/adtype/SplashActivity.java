@@ -5,14 +5,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.FrameLayout;
 
-import com.tgcenter.demo.R;
-import com.tgcenter.demo.ads.utils.Constant;
-import com.tgcenter.demo.ads.utils.Utils;
 import com.taurusx.ads.core.api.ad.SplashAd;
 import com.taurusx.ads.core.api.listener.AdError;
 import com.taurusx.ads.core.api.listener.newapi.SplashAdListener;
 import com.taurusx.ads.core.api.model.ILineItem;
 import com.taurusx.ads.core.api.utils.LogUtil;
+import com.tgcenter.demo.R;
+import com.tgcenter.demo.ads.utils.Constant;
+import com.tgcenter.demo.ads.utils.Utils;
 
 public class SplashActivity extends Activity {
 
