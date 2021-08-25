@@ -68,7 +68,6 @@ public class FeedListActivity extends BaseActivity {
                 if (feedList != null && !feedList.isEmpty()) {
                     mContainer.removeAllViews();
                     for (Feed feed : feedList) {
-                        View a = feed.getView();
                         View adView = feed.getView();
                         if (adView != null) {
                             ViewUtil.removeFromParent(adView);
