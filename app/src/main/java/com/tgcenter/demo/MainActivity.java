@@ -17,7 +17,6 @@ import com.nefarian.privacy.policy.permissioncheck.PermissionResultListener;
 import com.tgcenter.demo.ads.NetworkAdActivity;
 import com.tgcenter.demo.anti_addiction.AntiAddictionActivity;
 import com.tgcenter.demo.richox.RichOXMainActivity;
-import com.tgcenter.unified.antiaddiction.api.AntiAddiction;
 import com.tgcenter.unified.sdk.api.InitConfig;
 import com.tgcenter.unified.sdk.api.PermissionUtil;
 import com.tgcenter.unified.sdk.api.TGCenter;
@@ -268,10 +267,9 @@ public class MainActivity extends AppCompatActivity {
         WeChatHelper.login(LoginType.Wechat);
     }
 
-    // 清除 SDK 的所有数据，包括《用户协议与隐私政策》的授权状态、用户信息等
     private void logout() {
+        // 注销：清除 SDK 的数据和状态，包括隐私、防沉迷
         TGCenter.clearCache(MainActivity.this);
-        AntiAddiction.getInstance().logout();
         System.exit(0);
     }
 }
