@@ -5,6 +5,7 @@ buildscript {
         maven { url "./Upload-Plugin" }
         maven { url "./Upload-Library" }
         // maven { url 'https://loveota-maven.pkg.coding.net/repository/bintray/lebianplugin/'}
+        maven{ url 'https://artifact.bytedance.com/repository/Volcengine/' }
 
         google()
         jcenter()
@@ -16,13 +17,22 @@ buildscript {
         classpath "com.android.tools.build:gradle:4.0.2"
 
         // ModooPlay
-        classpath "com.tgcenter.unified:plugin:2.2"
+        classpath "com.tgcenter.unified:plugin:2.3"
 
         // 由于 lbplugin 服务出问题，现在只能用 0.1.3 版本
         // classpath 'com.loveota.plugins:lbplugin:0.1.7'
         classpath 'com.loveota.plugins:lbplugin:0.1.3'
+
         classpath 'com.mob.sdk:MobSDK:+'
+
+        // RangersAppLog
+        classpath 'com.bytedance.applog:RangersAppLog-All-plugin:6.4.1'
     }
+}
+
+ext {
+    // 是否是海外产品
+    oversea = false
 }
 
 allprojects {

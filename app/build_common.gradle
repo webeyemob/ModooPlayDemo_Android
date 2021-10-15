@@ -1,8 +1,13 @@
 apply plugin: 'com.android.application'
 // ModooPlay
-apply plugin: 'com.loveota.lbsdk'
 apply plugin: 'com.tgcenter.unified'
+
+apply plugin: 'com.loveota.lbsdk'
 apply from: 'lebian_cust.gradle'
+
+if (oversea) {
+    apply plugin: 'com.bytedance.std.tracker'
+}
 
 apply plugin: 'com.mob.sdk'
 MobSDK {
@@ -25,17 +30,27 @@ tgCenter {
     }
 
     dependencies {
-        tgCenter true
+        if (oversea) {
+            tgCenter_Oversea true
+        } else {
+            tgCenter true
+        }
         privacy true
         embed true
         umeng true
         appsFlyer true
 
         // 仅头条投放深度转化需要 RangersAppLog
-        rangersAppLog_Lite_cn true
+        if (oversea) {
+            rangersAppLog_Lite_global true
+        } else {
+            rangersAppLog_Lite_cn true
+        }
 
         // 游戏防沉迷
         gameAntiAddiction true
+
+        test true
 
         // 微信登录
         weChat true

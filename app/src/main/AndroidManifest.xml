@@ -174,7 +174,5 @@
         <meta-data
             android:name="Klevin.AppId"
             android:value="30008" />
-
-
     </application>
 </manifest>
