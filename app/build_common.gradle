@@ -50,8 +50,6 @@ tgCenter {
         // 游戏防沉迷
         gameAntiAddiction true
 
-        test true
-
         // 微信登录
         weChat true
 
