@@ -60,7 +60,11 @@ tgCenter {
         lebian true
 
         // 广告
-        taurusXAds true
+        if (oversea) {
+            taurusXAds_Oversea true
+        } else {
+            taurusXAds true
+        }
         // 不同的渠道需要集成的 Network 不一样，请务必正确配置
         taurusXAdsNetwork = [
                 mobrain          : true, // 穿山甲聚合
