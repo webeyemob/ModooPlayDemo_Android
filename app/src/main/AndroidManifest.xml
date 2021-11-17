@@ -61,8 +61,7 @@
             android:name=".ads.adtype.MixFullScreenActivity"
             android:screenOrientation="portrait" />
 
-        <activity
-            android:name=".anti_addiction.AntiAddictionActivity" />
+        <activity android:name=".anti_addiction.AntiAddictionActivity" />
 
         <activity
             android:name=".anti_addiction.CustomRealNameActivity"
@@ -71,7 +70,7 @@
             android:name=".anti_addiction.CustomTimeLimitActivity"
             android:theme="@style/Theme.AppCompat.Dialog" />
 
-        <activity android:name=".richox.RichOXMainActivity"/>
+        <activity android:name=".richox.RichOXMainActivity" />
 
         <activity android:name=".richox.activity.RichOXH5Activity" />
 
@@ -159,6 +158,16 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
+
+        <!-- AdMob App ID -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713" />
+
+        <!-- AppLovin Key -->
+        <meta-data
+            android:name="applovin.sdk.key"
+            android:value="qTA2uuo2zUQLXHPGDPooTJLZprJIiR6HDcHEgaJq24ErXVwNTqt73MlOFEssXOL9Q1RIFDlR1136N8uhTlthKc" />
 
         <provider
             android:name="com.tencent.klevin.utils.FileProvider"

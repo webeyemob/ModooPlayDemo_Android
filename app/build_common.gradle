@@ -82,16 +82,27 @@ tgCenter {
                 oppo             : false, // OPPO
                 vivo             : false, // vivo
                 xiaomi           : false  // 小米
+
+//                tradplus          : true,
+//                tradplus_admob    : true,
+//                tradplus_applovin : true,
+//                tradplus_facebook : true,
+//                tradplus_inmobi   : true,
+//                tradplus_mintegral: true,
+//                tradplus_mopub    : true,
+//                tradplus_pangle   : true,
+//                tradplus_unity_ads: true,
+//                tradplus_vungle   : true
         ]
 
         // richOX 模块相关依赖
         richOX = [
-                base                   : true,
-                base_oversea           : false,
+                base                   : !oversea,
+                base_oversea           : oversea,
                 interactive_scene      : true,
-                fission_moblink        : true,
-                fission_moblink_oversea: false,
-                fission_firebase       : false,
+                fission_moblink        : !oversea,
+                fission_moblink_oversea: oversea,
+                fission_firebase       : oversea,
                 sect                   : true,
                 strategy_normal        : true,
                 strategy_stage         : true,

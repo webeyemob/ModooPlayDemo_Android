@@ -42,6 +42,18 @@
       }
     },
     {
+      "adName": "TradPlus",
+      "interstitial": {
+        "Interstitial": "e653f094-ca27-405f-8e3f-ca444fa05f9c"
+      },
+      "rewarded": {
+        "RewardedVideo": "ee72238c-8b7e-4ec4-b3c7-3a3beb93a0b3"
+      },
+      "banner": {
+        "banner": "2ba694a6-307c-4f70-807b-53de36eaa9cb"
+      }
+    },
+    {
       "adName": "Mobrain\n穿山甲聚合",
       "banner": {
         "横幅 320*50": "7325e51b-a756-4227-bca2-67a8e5efe32f",

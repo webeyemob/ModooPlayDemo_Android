@@ -47,6 +47,7 @@ allprojects {
         maven { url "../Upload-Privacy" }
         maven { url "../Upload-Embed" }
         maven { url "../Upload-DataFlyer" }
+        maven { url "../Upload-Mediation" }
     }
 }
 
