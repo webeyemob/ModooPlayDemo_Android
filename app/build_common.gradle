@@ -82,17 +82,6 @@ tgCenter {
                 oppo             : false, // OPPO
                 vivo             : false, // vivo
                 xiaomi           : false  // 小米
-
-//                tradplus          : true,
-//                tradplus_admob    : true,
-//                tradplus_applovin : true,
-//                tradplus_facebook : true,
-//                tradplus_inmobi   : true,
-//                tradplus_mintegral: true,
-//                tradplus_mopub    : true,
-//                tradplus_pangle   : true,
-//                tradplus_unity_ads: true,
-//                tradplus_vungle   : true
         ]
 
         // richOX 模块相关依赖
