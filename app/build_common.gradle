@@ -36,7 +36,11 @@ tgCenter {
             tgCenter true
         }
         privacy true
-        embed true
+        if (oversea) {
+            embed_Oversea true
+        } else {
+            embed true
+        }
         umeng true
         appsFlyer true
 
